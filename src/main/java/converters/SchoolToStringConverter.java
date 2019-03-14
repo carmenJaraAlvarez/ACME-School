@@ -1,5 +1,5 @@
 /*
- * AdministratorToStringConverter.java
+ * SchoolToStringConverter.java
  * 
  * Copyright (C) 2017 Universidad de Sevilla
  * 

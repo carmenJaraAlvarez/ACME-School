@@ -616,9 +616,9 @@
 			<list>
 			</list>
 		</property>
-		<property name="announcements">
+		<property name="advertisements">
 			<list>
-				<ref bean="announcement1" />
+				<ref bean="advertisement1" />
 			</list>
 		</property>
 		<property name="userAccount" ref="ua_agent1" />
@@ -648,21 +648,21 @@
 			<list>
 			</list>
 		</property>
-		<property name="announcements">
+		<property name="advertisements">
 			<list>
-				<ref bean="announcement2" />
-				<ref bean="announcement3" />
-				<ref bean="announcement4" />
+				<ref bean="advertisement2" />
+				<ref bean="advertisement3" />
+				<ref bean="advertisement4" />
 			</list>
 		</property>
 		<property name="userAccount" ref="ua_agent2" />
 	</bean>
 
-	<!-- Announcements -->
+	<!-- Advertisements -->
 
-	<bean id="announcement1" class="domain.Announcement">
+	<bean id="advertisement1" class="domain.Advertisement">
 		<property name="creditCard" ref="creditCard1" />
-		<property name="title" value="announcement1 doritos" />
+		<property name="title" value="advertisement1 doritos" />
 		<property name="banner"
 			value="http://www.lascancionesdelatv.es/wp-content/uploads/2017/02/cancion-anuncio-doritos-1.jpg" />
 		<property name="web" value="https://ev.us.es/" />
@@ -671,9 +671,9 @@
 		<property name="agent" ref="agent1" />
 	</bean>
 
-	<bean id="announcement2" class="domain.Announcement">
+	<bean id="advertisement2" class="domain.Advertisement">
 		<property name="creditCard" ref="creditCard2" />
-		<property name="title" value="announcement2 cocacola" />
+		<property name="title" value="advertisement2 cocacola" />
 		<property name="banner"
 			value="https://i.ytimg.com/vi/nWU1c3jYjYE/hqdefault.jpg" />
 		<property name="web" value="https://ev.us.es/" />
@@ -682,9 +682,9 @@
 		<property name="agent" ref="agent2" />
 	</bean>
 
-	<bean id="announcement3" class="domain.Announcement">
+	<bean id="advertisement3" class="domain.Advertisement">
 		<property name="creditCard" ref="creditCard3" />
-		<property name="title" value="announcement3 donuts" />
+		<property name="title" value="advertisement3 donuts" />
 		<property name="banner"
 			value="https://cancionesdetelevision.com/wp-content/uploads/2017/04/Anuncio-donuts_opt.jpg" />
 		<property name="web" value="https://ev.us.es/" />
@@ -693,9 +693,9 @@
 		<property name="agent" ref="agent2" />
 	</bean>
 
-	<bean id="announcement4" class="domain.Announcement">
+	<bean id="advertisement4" class="domain.Advertisement">
 		<property name="creditCard" ref="creditCard4" />
-		<property name="title" value="announcement4 tortilla" />
+		<property name="title" value="advertisement4 tortilla" />
 		<property name="banner"
 			value="https://i.ytimg.com/vi/kN0chYy7aBc/hqdefault.jpg" />
 		<property name="web" value="https://ev.us.es/" />
@@ -785,6 +785,13 @@
 		</property>
 		<property name="classTimes">
 			<list>
+				<ref bean="classTime1" />
+				<ref bean="classTime2" />
+				<ref bean="classTime3" />
+				<ref bean="classTime4" />
+				<ref bean="classTime5" />
+				<ref bean="classTime6" />
+				<ref bean="classTime7" />
 			</list>
 		</property>
 	</bean>
@@ -897,6 +904,59 @@
 			</list>
 		</property>
 	</bean>
+	
+
+	<!-- ClassTimes -->
+	
+	
+	<bean id="classTime1" class="domain.ClassTime">
+		<property name="day" value="1" />
+		<property name="hour" value="08:00-10:00" />
+		<property name="subject" ref="subject1" />
+		<property name="classGroup" ref="classGroup1" />
+	</bean>
+	
+	<bean id="classTime2" class="domain.ClassTime">
+		<property name="day" value="4" />
+		<property name="hour" value="10:00-12:00" />
+		<property name="subject" ref="subject1" />
+		<property name="classGroup" ref="classGroup1" />
+	</bean>
+	
+	<bean id="classTime3" class="domain.ClassTime">
+		<property name="day" value="2" />
+		<property name="hour" value="10:00-12:00" />
+		<property name="subject" ref="subject2" />
+		<property name="classGroup" ref="classGroup1" />
+	</bean>
+	
+	<bean id="classTime4" class="domain.ClassTime">
+		<property name="day" value="5" />
+		<property name="hour" value="08:00-10:00" />
+		<property name="subject" ref="subject2" />
+		<property name="classGroup" ref="classGroup1" />
+	</bean>
+	
+	<bean id="classTime5" class="domain.ClassTime">
+		<property name="day" value="1" />
+		<property name="hour" value="10:00-12:00" />
+		<property name="subject" ref="subject1" />
+		<property name="classGroup" ref="classGroup1" />
+	</bean>
+	
+	<bean id="classTime6" class="domain.ClassTime">
+		<property name="day" value="3" />
+		<property name="hour" value="08:00-10:00" />
+		<property name="subject" ref="subject4" />
+		<property name="classGroup" ref="classGroup1" />
+	</bean>
+	
+	<bean id="classTime7" class="domain.ClassTime">
+		<property name="day" value="2" />
+		<property name="hour" value="08:00-10:00" />
+		<property name="subject" ref="subject5" />
+		<property name="classGroup" ref="classGroup1" />
+	</bean>
 
 
 	<!-- CreditCards -->
@@ -944,9 +1004,6 @@
 		<property name="moment" value="01/17/2017 10:10" />
 		<property name="title" value="title of entry 1 for classGroup1" />
 		<property name="body" value="this is the body of entry 1 for classGroup1" />
-		<property name="Attachments">
-			<null />
-		</property>
 	</bean>
 
 	<bean id="entry2" class="domain.Entry">
@@ -954,9 +1011,6 @@
 		<property name="moment" value="02/17/2017 10:10" />
 		<property name="title" value="title of entry 2 for classGroup1" />
 		<property name="body" value="this is the body of entry 2 for classGroup1" />
-		<property name="Attachments">
-			<null />
-		</property>
 	</bean>
 
 	<bean id="entry3" class="domain.Entry">
@@ -964,9 +1018,6 @@
 		<property name="moment" value="03/17/2017 10:10" />
 		<property name="title" value="title of entry 3 for classGroup1" />
 		<property name="body" value="this is the body of entry 3 for classGroup1" />
-		<property name="Attachments">
-			<null />
-		</property>
 	</bean>
 
 	<bean id="entry4" class="domain.Entry">
@@ -974,9 +1025,6 @@
 		<property name="moment" value="01/17/2017 10:11" />
 		<property name="title" value="title of entry 4 for classGroup2" />
 		<property name="body" value="this is the body of entry 4 for classGroup2" />
-		<property name="Attachments">
-			<null />
-		</property>
 	</bean>
 
 	<bean id="entry5" class="domain.Entry">
@@ -984,9 +1032,6 @@
 		<property name="moment" value="01/17/2017 10:14" />
 		<property name="title" value="title of entry 5 for classGroup5" />
 		<property name="body" value="this is the body of entry 5 for classGroup5" />
-		<property name="Attachments">
-			<null />
-		</property>
 	</bean>
 
 	<bean id="entry6" class="domain.Entry">
@@ -994,9 +1039,6 @@
 		<property name="moment" value="02/17/2017 10:15" />
 		<property name="title" value="title of entry 6 for classGroup5" />
 		<property name="body" value="this is the body of entry 6 for classGroup5" />
-		<property name="Attachments">
-			<null />
-		</property>
 	</bean>
 
 	<bean id="entry7" class="domain.Entry">
@@ -1004,9 +1046,6 @@
 		<property name="moment" value="01/17/2017 10:16" />
 		<property name="title" value="title of entry 7 for classGroup5" />
 		<property name="body" value="this is the body of entry 7 for classGroup5" />
-		<property name="Attachments">
-			<null />
-		</property>
 	</bean>
 
 	<!-- Events -->
@@ -5226,7 +5265,7 @@
 		</property>
 		<property name="wordsLimit" value="20" />
 		<property name="price" value="180.0" />
-		<property name="payPalEmail" value="acme-school@gmail.com" />
+		<property name="payPalEmail" value="acmeSchool4@gmail.com" />
 	</bean>
 
 	<!-- Homeworks -->
@@ -5583,173 +5622,191 @@
 		<property name="moment" value="02/23/2017 12:00" />
 		<property name="body"
 			value="Buenos días, ayer subieron las notas de educación física." />
-		<property name="Attachments">
+		<property name="Attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent1" />
+
 	</bean>
 
 	<bean id="message2" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:01" />
 		<property name="body" value="¿Cómo puedo verlas?" />
-		<property name="Attachments">
+		<property name="Attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent3" />
+				
 	</bean>
 
 	<bean id="message3" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:02" />
 		<property name="body"
 			value="Accede al perfil de tu hijo desde la aplicación y pulsa en ver notas" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent1" />
+				
 	</bean>
 
 	<bean id="message4" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:03" />
 		<property name="body" value="¿Y ese examen?" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent5" />
+				
 	</bean>
 
 	<bean id="message5" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:05" />
 		<property name="body" value="Mi hijo no me dijo que había hecho un examen" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent5" />
+				
 	</bean>
 
 	<bean id="message6" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:06" />
 		<property name="body" value="Pues al parecer fue muy sencillito" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent6" />
+				
 	</bean>
 
 	<bean id="message7" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:07" />
 		<property name="body" value="Oh, gracias por avisar, ahora mismo las veo" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent7" />
+				
 	</bean>
 
 	<bean id="message8" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:08" />
 		<property name="body" value="¿tú eres el padre de los gemelos?" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent1" />
+				
 	</bean>
 
 	<bean id="message9" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:09" />
 		<property name="body"
 			value="si, es él. Ayer estuvieron en mi casa y son un encanto" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent3" />
+				
 	</bean>
 
 	<bean id="message10" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:10" />
 		<property name="body"
 			value="¿Sabéis si hay algún examen más para esta semana?" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent5" />
+				
 	</bean>
 
 	<bean id="message11" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:11" />
 		<property name="body" value="Que ya me tiene loca ete niño" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent5" />
+				
 	</bean>
 
 	<bean id="message12" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:12" />
 		<property name="body"
 			value="Pues en principio no, aunque tienen una tareas de lengua pendiente" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent3" />
+				
 	</bean>
 
 	<bean id="message13" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:13" />
 		<property name="body"
 			value="A mi me está volviendo loco el niño con el trabajito de lengua" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent1" />
+				
 	</bean>
 
 	<bean id="message14" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:14" />
 		<property name="body"
 			value="Voy a poner la tarea en el grupo, no sea que haya alguien que aun no lo sepa." />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent1" />
+				
 	</bean>
 
 	<bean id="message15" class="domain.Message">
 		<property name="moment" value="02/23/2017 12:15" />
 		<property name="body"
 			value="Si, soy el padre de los gemelos, perdona que estaba mirando las notas." />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent7" />
+				
 	</bean>
 
 	<bean id="message16" class="domain.Message">
 		<property name="moment" value="05/15/2017 12:15" />
 		<property name="body"
 			value="¿Qué día dan este año las vacaciones a los niños?" />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent8" />
+				
 	</bean>
 
 	<bean id="message17" class="domain.Message">
 		<property name="moment" value="05/15/2017 12:16" />
 		<property name="body"
 			value="Pues había un calendario escolar en la aplicación, dame permisos de administrador y lo enlazo." />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent7" />
+				
 	</bean>
 
 	<bean id="message18" class="domain.Message">
 		<property name="moment" value="05/15/2017 12:27" />
 		<property name="body"
 			value="Ya está, ahí tenéis el calendario escolar de este año." />
-		<property name="Attachments">
+		<property name="attachment">
 			<null />
 		</property>
 		<property name="parent" ref="parent7" />
+				
 	</bean>
 
 	<!-- Parents -->
@@ -6565,17 +6622,6 @@
 		<property name="priority" value="HIGH" />
 		<!-- Relaciones -->
 		<property name="actorSender" ref="parent1" />
-		<property name="actorReceivers">
-			<list>
-				<ref bean="parent3" />
-			</list>
-		</property>
-		<property name="folders">
-			<list>
-				<ref bean="outBoxParent1" />
-				<ref bean="inBoxParent3" />
-			</list>
-		</property>
 	</bean>
 
 	<bean id="privateMessage2" class="domain.PrivateMessage">
@@ -6585,17 +6631,6 @@
 		<property name="priority" value="LOW" />
 		<!-- Relaciones -->
 		<property name="actorSender" ref="parent3" />
-		<property name="actorReceivers">
-			<list>
-				<ref bean="parent1" />
-			</list>
-		</property>
-		<property name="folders">
-			<list>
-				<ref bean="outBoxParent3" />
-				<ref bean="inBoxParent1" />
-			</list>
-		</property>
 	</bean>
 
 	<bean id="privateMessage3" class="domain.PrivateMessage">
@@ -6606,16 +6641,6 @@
 		<property name="priority" value="NEUTRAL" />
 		<!-- Relaciones -->
 		<property name="actorSender" ref="administrator1" />
-		<property name="actorReceivers">
-			<list>
-				<ref bean="parent1" />
-			</list>
-		</property>
-		<property name="folders">
-			<list>
-				<ref bean="notificationBoxParent1" />
-			</list>
-		</property>
 	</bean>
 
 	<bean id="privateMessage4" class="domain.PrivateMessage">
@@ -6627,17 +6652,6 @@
 		<property name="priority" value="NEUTRAL" />
 		<!-- Relaciones -->
 		<property name="actorSender" ref="parent8" />
-		<property name="actorReceivers">
-			<list>
-				<ref bean="parent1" />
-			</list>
-		</property>
-		<property name="folders">
-			<list>
-				<ref bean="spamBoxParent1" />
-				<ref bean="outBoxParent8" />
-			</list>
-		</property>
 	</bean>
 
 	<!-- Schools -->
@@ -7521,9 +7535,6 @@
 	<bean id="studentMessage1" class="domain.StudentMessage">
 		<property name="moment" value="04/12/2018 12:10" />
 		<property name="body" value="Hola a todos! Bienvenidos al grupo!" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student1" />
 	</bean>
 
@@ -7531,18 +7542,12 @@
 		<property name="moment" value="04/12/2018 12:11" />
 		<property name="body"
 			value="Como mola esta aplicación, espera que entra ahora el student9" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student6" />
 	</bean>
 
 	<bean id="studentMessage3" class="domain.StudentMessage">
 		<property name="moment" value="04/12/2018 12:12" />
 		<property name="body" value="Bienvenido student9" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student1" />
 	</bean>
 
@@ -7550,9 +7555,6 @@
 		<property name="moment" value="04/12/2018 12:13" />
 		<property name="body"
 			value="Hola a todos, por fin encontré el grupo, ¿también están los gemes por aquí?" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student9" />
 	</bean>
 
@@ -7560,36 +7562,24 @@
 		<property name="moment" value="04/12/2018 12:14" />
 		<property name="body"
 			value="Siii, hemos coincidido todos en sexto por lo que veo" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student13" />
 	</bean>
 
 	<bean id="studentMessage6" class="domain.StudentMessage">
 		<property name="moment" value="04/12/2018 12:15" />
 		<property name="body" value="Mañana hablamos en clase" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student13" />
 	</bean>
 
 	<bean id="studentMessage7" class="domain.StudentMessage">
 		<property name="moment" value="05/12/2018 12:10" />
 		<property name="body" value="Ea! pues ya nos vigilan nuestros padres." />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student15" />
 	</bean>
 
 	<bean id="studentMessage8" class="domain.StudentMessage">
 		<property name="moment" value="05/12/2018 12:11" />
 		<property name="body" value="Si... esto no va a salir bien, ya verás" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student16" />
 	</bean>
 
@@ -7597,9 +7587,6 @@
 		<property name="moment" value="05/12/2018 12:12" />
 		<property name="body"
 			value="Es que no sé quién fue el imbécil al que se le ocurrió esta aplicación." />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student15" />
 	</bean>
 
@@ -7607,9 +7594,6 @@
 		<property name="moment" value="05/12/2018 12:13" />
 		<property name="body"
 			value="Que sino lo estampaba contra la pared al hijo de puta." />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student15" />
 	</bean>
 
@@ -7617,9 +7601,6 @@
 		<property name="moment" value="05/12/2018 12:14" />
 		<property name="body"
 			value="Tío, relax, que esto creo que tiene aviso de palabras maliciosas, verás como avisen a los padres la que nos va a caer encima." />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student17" />
 	</bean>
 
@@ -7627,27 +7608,18 @@
 		<property name="moment" value="05/12/2018 12:15" />
 		<property name="body"
 			value="Si claro, ya nos van a controlar hasta si tenemos sexo a este paso." />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student15" />
 	</bean>
 
 	<bean id="studentMessage13" class="domain.StudentMessage">
 		<property name="moment" value="05/12/2018 12:16" />
 		<property name="body" value="me cago en la puta" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student15" />
 	</bean>
 
 	<bean id="studentMessage14" class="domain.StudentMessage">
 		<property name="moment" value="05/12/2018 12:17" />
 		<property name="body" value="si es que vaya imbécil" />
-		<property name="file">
-			<null />
-		</property>
 		<property name="student" ref="student15" />
 	</bean>
 
@@ -7661,18 +7633,11 @@
 				<ref bean="homework1" />
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-				<ref bean="mark1" />
-				<ref bean="mark2" />
-				<ref bean="mark3" />
-				<ref bean="mark4" />
-				<ref bean="mark5" />
-				<ref bean="mark6" />
-			</list>
-		</property>
+		
 		<property name="classTimes">
 			<list>
+				<ref bean="classTime1" />
+				<ref bean="classTime2" />
 			</list>
 		</property>
 	</bean>
@@ -7687,12 +7652,11 @@
 				<ref bean="homework4" />
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+	
 		<property name="classTimes">
 			<list>
+				<ref bean="classTime3" />
+				<ref bean="classTime4" />
 			</list>
 		</property>
 	</bean>
@@ -7705,12 +7669,10 @@
 				<ref bean="homework5" />
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
+				<ref bean="classTime5" />
 			</list>
 		</property>
 	</bean>
@@ -7722,12 +7684,10 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+	
 		<property name="classTimes">
 			<list>
+				<ref bean="classTime6" />
 			</list>
 		</property>
 	</bean>
@@ -7740,12 +7700,10 @@
 				<ref bean="homework6" />
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+	
 		<property name="classTimes">
 			<list>
+				<ref bean="classTime7" />
 			</list>
 		</property>
 	</bean>
@@ -7757,10 +7715,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7774,10 +7729,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7791,10 +7743,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7808,10 +7757,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7825,10 +7771,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7842,12 +7785,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-				<ref bean="mark7" />
-				<ref bean="mark8" />
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7861,12 +7799,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-				<ref bean="mark9" />
-				<ref bean="mark10" />
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7881,10 +7814,7 @@
 				<ref bean="homework7" />
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7899,10 +7829,7 @@
 				<ref bean="homework8" />
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>
@@ -7916,10 +7843,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="marks">
-			<list>
-			</list>
-		</property>
+
 		<property name="classTimes">
 			<list>
 			</list>

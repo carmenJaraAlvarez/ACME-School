@@ -11,62 +11,42 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<link rel="stylesheet" href="styles/common.css" type="text/css">
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
 
-<display:table pagesize="5" class="displaytag" name="schools"
-	requestURI="school/list.do" id="rowSchool">
+<div class="container-fluid">
 
-	<display:column titleKey="school.image">
-		<img src="${school.image}" alt="${school.image}" height="60px"
-			width="60px" />
-	</display:column>
+	<display:table class="table table-striped table-bordered" pagesize="5"
+		name="schools" requestURI="school/list.do" id="rowSchool">
 
-	<display:column titleKey="school.nameSchool">
-		<jstl:out value="${rowSchool.nameSchool }" />
-	</display:column>
-
-	<display:column titleKey="school.address">
-		<jstl:out value="${rowSchool.address }" />
-	</display:column>
-
-	<display:column titleKey="school.emailSchool">
-		<jstl:out value="${rowSchool.emailSchool }" />
-	</display:column>
-
-	<display:column titleKey="school.phoneNumber">
-		<jstl:out value="${rowSchool.phoneNumber }" />
-	</display:column>
-	<security:authorize access="hasRole('PARENT')">
-		<display:column>
-			<div>
-				<a href="classGroup/parent/list.do?schoolId=${rowSchool.id}"> <spring:message
-						code="school.classGroups" />
-				</a>
-			</div>
+		<display:column titleKey="school.nameSchool">
+			<a href="school/display.do?schoolId=${rowSchool.id}"><jstl:out value="${rowSchool.nameSchool }" /></a>
 		</display:column>
-	</security:authorize>
+
+		<display:column titleKey="school.address">
+			<jstl:out value="${rowSchool.address }" />
+		</display:column>
+
+		<jstl:if test="${showParentButtons}">
+			<!-- Columna de editar -->
+			<security:authorize access="hasRole('PARENT')">
+				<security:authorize access="hasRole('PARENT')">
+					<display:column titleKey="school.edit">
+						<a href="school/parent/edit.do?schoolId=${rowSchool.id}"> <spring:message
+								code="school.edit" />
+						</a>
+					</display:column>
+				</security:authorize>
+			</security:authorize>
+		</jstl:if>
+
+	</display:table>
 
 	<jstl:if test="${showParentButtons}">
-		<!-- Columna de editar -->
+		<!-- Botón de create -->
 		<security:authorize access="hasRole('PARENT')">
-			<security:authorize access="hasRole('PARENT')">
-				<display:column titleKey="school.edit">
-					<a href="school/parent/edit.do?schoolId=${rowSchool.id}"> <spring:message
-							code="school.edit" />
-					</a>
-				</display:column>
-			</security:authorize>
+			<a href="school/parent/create.do?createGroup=0"> <spring:message
+					code="school.create" />
+			</a>
 		</security:authorize>
 	</jstl:if>
-
-</display:table>
-
-<jstl:if test="${showParentButtons}">
-	<!-- Botón de create -->
-	<security:authorize access="hasRole('PARENT')">
-		<a href="school/parent/create.do"> <spring:message
-				code="school.create" />
-		</a>
-	</security:authorize>
-</jstl:if>
-
+</div>

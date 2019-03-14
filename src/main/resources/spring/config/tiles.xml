@@ -21,11 +21,25 @@
 		<value>/views/actor/tiles.xml</value>
 		<value>/views/global/tiles.xml</value>
 		<value>/views/admin/tiles.xml</value>
-		
+
 		<value>/views/parentsGroup/tiles.xml</value>
 		<value>/views/school/tiles.xml</value>
 		<value>/views/classGroup/tiles.xml</value>
-		<value>/views/level/tiles.xml</value>
 		<value>/views/searcher/tiles.xml</value>
+		<value>/views/schoolCalendar/tiles.xml</value>
+		<value>/views/homework/tiles.xml</value>
+		<value>/views/chatRoom/tiles.xml</value>
+		<value>/views/advertisement/tiles.xml</value>
+		<value>/views/privateMessage/tiles.xml</value>
+		<value>/views/folder/tiles.xml</value>
+		<value>/views/event/tiles.xml</value>
+		<value>/views/subject/tiles.xml</value>
+		<value>/views/extracurricularActivity/tiles.xml</value>
+		<value>/views/student/tiles.xml</value>
+		<value>/views/message/tiles.xml</value>
+		<value>/views/mark/tiles.xml</value>
+		<value>/views/entry/tiles.xml</value>
+		<value>/views/fileUpload/tiles.xml</value>
+		<value>/views/classTime/tiles.xml</value>
 	</util:list>
 </beans>

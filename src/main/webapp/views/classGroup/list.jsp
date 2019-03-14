@@ -10,25 +10,55 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
 
-<link rel="stylesheet" href="styles/common.css" type="text/css">
+<div class="container-fluid">
 
-<display:table pagesize="5" class="displaytag" name="classGroups"
-	requestURI="classGroup/parent/list.do" id="rowClassGroup">
+	<display:table pagesize="5" class="table table-striped table-bordered"
+		name="classGroups" requestURI="${requestURI}"
+		id="rowClassGroup">
 
-	<display:column titleKey="classGroup.level">
-		<jstl:out value="${rowClassGroup.level.level}" />
-	</display:column>
+		<display:column titleKey="classGroup.level">
+			<jstl:out value="${rowClassGroup.level.level}" />
+		</display:column>
 
-	<display:column titleKey="classGroup.name">
-		<jstl:out value="${rowClassGroup.name}" />
-	</display:column>
+		<display:column titleKey="classGroup.name">
+			<jstl:out value="${rowClassGroup.name}" />
+		</display:column>
+		<security:authorize access="hasRole('PARENT')">
+			<display:column titleKey="parent.signUpStudent">
+				<a href="actor/createStudent.do?classGroupId=${rowClassGroup.id}">
+					<spring:message code="parent.signUpStudent" />
+				</a>
+			</display:column>
 
-	<display:column>
-		<a href="actor/createStudent.do?classGroupId=${rowClassGroup.id}">
-			<spring:message code="parent.signUpStudent" />
+			<display:column titleKey="parent.listSubjects">
+				<a href="subject/parent/list.do?classGroupId=${rowClassGroup.id}">
+					<spring:message code="parent.listSubjects" />
+				</a>
+			</display:column>
+
+		</security:authorize>
+		<security:authorize access="hasRole('TEACHER')">
+			<display:column titleKey="classGroup.student">
+				<a href="student/teacher/list.do?classGroupId=${rowClassGroup.id}">
+					<spring:message code="classGroup.listStudents" />
+				</a>
+			</display:column>
+
+		</security:authorize>
+	</display:table>
+	<security:authorize access="hasRole('PARENT')">
+		<div>
+			<a href="classGroup/parent/create.do?schoolId=${schoolId}"><spring:message
+					code="classGroup.create" /></a>
+		</div>
+	</security:authorize>
+
+	<security:authorize access="hasRole('TEACHER')">
+		<spring:message code="student.riskSituations" var="button" />
+		<a href="student/teacher/riskList.do"> <input type=button
+			class="btn" value="${button }" />
 		</a>
-	</display:column>
-
-</display:table>
-
+	</security:authorize>
+</div>

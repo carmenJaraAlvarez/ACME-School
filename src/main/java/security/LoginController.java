@@ -48,7 +48,7 @@ public class LoginController extends AbstractController {
 
 		ModelAndView result;
 
-		result = new ModelAndView("security/login");
+		result = createModelAndView("security/login");
 		result.addObject("credentials", credentials);
 		result.addObject("showError", showError);
 

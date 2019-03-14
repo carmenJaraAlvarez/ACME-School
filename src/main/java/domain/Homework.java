@@ -62,6 +62,7 @@ public class Homework extends DomainEntity {
 
 
 	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	public Subject getSubject() {
 		return this.subject;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles_es.xml * * Copyright (C) 2017 Universidad de Sevilla * * The 
+	use of this project is hereby constrained to the conditions of the * TDG 
+	Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="chatRoom/list" extends="master.page">
+		<put-attribute name="title" value="Lista de salas de chat" />
+		<put-attribute name="body" value="/views/chatRoom/list.jsp" />
+	</definition>
+	
+	<definition name="chatRoom/chat" extends="master.page">
+		<put-attribute name="title" value="Chat" />
+		<put-attribute name="body" value="/views/chatRoom/chat.jsp" />
+	</definition>
+	
+	<definition name="chatRoom/myList" extends="master.page">
+		<put-attribute name="title" value="Mis salas de chat" />
+		<put-attribute name="body" value="/views/chatRoom/list.jsp" />
+	</definition>
+
+	<definition name="chatRoom/edit" extends="master.page">
+		<put-attribute name="title" value="Edición de salas" />
+		<put-attribute name="body" value="/views/chatRoom/edit.jsp" />
+	</definition>
+
+</tiles-definitions>

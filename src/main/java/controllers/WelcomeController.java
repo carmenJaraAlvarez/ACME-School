@@ -48,7 +48,7 @@ public class WelcomeController extends AbstractController {
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = new Date();
 
-		result = new ModelAndView("welcome/index");
+		result = createModelAndView("welcome/index");
 		if (this.actorService.checkAuthenticate()) {
 			name = this.actorService.findByPrincipal().getName();
 		}

@@ -27,7 +27,15 @@
 
 <%@ attribute name="readonly" required="false" %>
 <%@ attribute name="placeholder" required="false" %>
+<%@ attribute name="cssClass" required="false" %>
+<%@ attribute name="maxWidth" required="false" %>
 
+<jstl:if test="${maxWidth == null}">
+	<jstl:set var="maxWidth" value="800px" />
+</jstl:if>
+<jstl:if test="${cssClass == null}">
+	<jstl:set var="cssClass" value="form-control" />
+</jstl:if>
 <jstl:if test="${readonly == null}">
 	<jstl:set var="readonly" value="false" />
 </jstl:if>
@@ -41,6 +49,6 @@
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>	
-	<form:input path="${path}" readonly="${readonly}" placeholder="${placeholder}" />	
-	<form:errors path="${path}" cssClass="error" />
+	<form:input cssClass="${cssClass}" cssStyle="max-width:${maxWidth};" path="${path}" readonly="${readonly}" placeholder="${placeholder}" />	
+	<form:errors path="${path}" cssClass="error" /><br/>
 </div>	

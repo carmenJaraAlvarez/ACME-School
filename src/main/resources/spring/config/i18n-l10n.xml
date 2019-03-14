@@ -21,12 +21,26 @@
 		<value>/views/actor/messages</value>
 		<value>/views/global/messages</value>
 		<value>/views/admin/messages</value>
-		
+
 		<value>/views/parentsGroup/messages</value>
 		<value>/views/school/messages</value>
 		<value>/views/classGroup/messages</value>
-		<value>/views/level/messages</value>
 		<value>/views/searcher/messages</value>
+		<value>/views/schoolCalendar/messages</value>
+		<value>/views/homework/messages</value>
+		<value>/views/chatRoom/messages</value>
+		<value>/views/advertisement/messages</value>
+		<value>/views/privateMessage/messages</value>
+		<value>/views/folder/messages</value>
+		<value>/views/event/messages</value>
+		<value>/views/subject/messages</value>
+		<value>/views/extracurricularActivity/messages</value>
+		<value>/views/message/messages</value>
+		<value>/views/student/messages</value>
+		<value>/views/mark/messages</value>
+		<value>/views/entry/messages</value>
+		<value>/views/fileUpload/messages</value>
+		<value>/views/classTime/messages</value>
 	</util:list>
 
 </beans>

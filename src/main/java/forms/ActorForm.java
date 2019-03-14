@@ -3,7 +3,9 @@ package forms;
 
 import domain.Administrator;
 import domain.Agent;
+import domain.ClassGroup;
 import domain.Parent;
+import domain.School;
 import domain.Student;
 import domain.Teacher;
 
@@ -16,6 +18,16 @@ public class ActorForm {
 	private String	address;
 	private String	phoneNumber;
 	private String	email;
+	
+	//Agent
+	private String	taxCode;
+	
+	//Teacher
+	private School  school;
+	
+	//Student
+	private ClassGroup classGroup;
+	private String comment;
 
 
 	// Form
@@ -80,6 +92,38 @@ public class ActorForm {
 		this.email = email;
 	}
 
+	public String getTaxCode() {
+		return taxCode;
+	}
+
+	public void setTaxCode(String taxCode) {
+		this.taxCode = taxCode;
+	}
+
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
+	public ClassGroup getClassGroup() {
+		return classGroup;
+	}
+
+	public void setClassGroup(ClassGroup classGroup) {
+		this.classGroup = classGroup;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public ActorForm(final Administrator admin) {
 		this();
 		this.id = admin.getId();
@@ -101,7 +145,47 @@ public class ActorForm {
 		this.address = agent.getAddress();
 		this.email = agent.getEmail();
 		this.phoneNumber = agent.getPhoneNumber();
+		this.taxCode = agent.getTaxCode();
 
+	}
+	
+	public ActorForm(final Student student) {
+		this();
+		this.id = student.getId();
+		this.version = student.getVersion();
+		this.name = student.getName();
+		this.surname = student.getSurname();
+		this.address = student.getAddress();
+		this.email = student.getEmail();
+		this.phoneNumber = student.getPhoneNumber();
+		this.classGroup = student.getClassGroup();
+		this.comment = student.getComment();
+
+	}
+	
+	public ActorForm(final Parent parent) {
+		this();
+		this.id = parent.getId();
+		this.version = parent.getVersion();
+		this.name = parent.getName();
+		this.surname = parent.getSurname();
+		this.address = parent.getAddress();
+		this.email = parent.getEmail();
+		this.phoneNumber = parent.getPhoneNumber();
+
+	}
+	
+	public ActorForm(final Teacher teacher) {
+		this();
+		this.id = teacher.getId();
+		this.version = teacher.getVersion();
+		this.name = teacher.getName();
+		this.surname = teacher.getSurname();
+		this.address = teacher.getAddress();
+		this.email = teacher.getEmail();
+		this.phoneNumber = teacher.getPhoneNumber();
+		this.school = teacher.getSchool();
+		
 	}
 
 	public Administrator getAdministrator() {
@@ -125,6 +209,7 @@ public class ActorForm {
 		agent.setAddress(this.address);
 		agent.setEmail(this.email);
 		agent.setPhoneNumber(this.phoneNumber);
+		agent.setTaxCode(this.taxCode);
 		return agent;
 	}
 	
@@ -150,6 +235,7 @@ public class ActorForm {
 		teacher.setAddress(this.address);
 		teacher.setEmail(this.email);
 		teacher.setPhoneNumber(this.phoneNumber);
+		teacher.setSchool(this.school);
 		return teacher;
 	}
 
@@ -162,6 +248,8 @@ public class ActorForm {
 		student.setAddress(this.address);
 		student.setEmail(this.email);
 		student.setPhoneNumber(this.phoneNumber);
+		student.setClassGroup(this.classGroup);
+		student.setComment(this.comment);
 		return student;
 	}
 

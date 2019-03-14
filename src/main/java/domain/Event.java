@@ -37,6 +37,7 @@ public class Event extends DomainEntity {
 		this.moment = moment;
 	}
 
+	@Valid
 	public Location getLocation() {
 		return this.location;
 	}

@@ -6,21 +6,25 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Message extends DomainEntity {
 
-	private Date	moment;
-	private String	body;
-	private String	Attachments;
+	private Date		moment;
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC)
+	private String		body;
+	private FileUpload	Attachment;
 
 
 	@NotNull
@@ -35,6 +39,7 @@ public class Message extends DomainEntity {
 	}
 
 	@NotBlank
+	@Lob
 	public String getBody() {
 		return this.body;
 	}
@@ -43,19 +48,20 @@ public class Message extends DomainEntity {
 		this.body = body;
 	}
 
-	public String getAttachments() {
-		return this.Attachments;
+	@Valid
+	public FileUpload getAttachment() {
+		return this.Attachment;
 	}
 
-	public void setAttachments(final String attachments) {
-		this.Attachments = attachments;
+	public void setAttachment(final FileUpload attachment) {
+		this.Attachment = attachment;
 	}
 
 
 	private Parent	parent;
 
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Parent getParent() {
 		return this.parent;
 	}

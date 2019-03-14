@@ -16,149 +16,175 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-	<spring:message code="article.Date.format" var="articleDateFormat" />
-<!-- Para mostrar bot�n de follow/unfollow y mensaje de operaci�n -->
-<security:authorize access="hasRole('USER')">
-	<jstl:if test="${actorType eq 'user' and canFollow}">
-		<jstl:choose>
-			<jstl:when test="${follow eq 'true'}">
-				<div style="color: green;">
-					<p>
-						<spring:message code="actor.follow.sucessfull" />
-						<jstl:out value="${actor.name}" />
-					</p>
-				</div>
-			</jstl:when>
-			<jstl:when test="${unfollow eq 'true'}">
-				<div style="color: green;">
-					<p>
-						<spring:message code="actor.unfollow.sucessfull" />
-						<jstl:out value="${actor.name}" />
-					</p>
-				</div>
-			</jstl:when>
-			<jstl:when test="${follow eq 'false'}">
-				<div style="color: red;">
-					<p>
-						<spring:message code="actor.follow.failed" />
-						<jstl:out value="${actor.name}" />
-					</p>
-				</div>
-			</jstl:when>
-			<jstl:when test="${unfollow eq 'false'}">
-				<div style="color: red;">
-					<p>
-						<spring:message code="actor.unfollow.failed" />
-						<jstl:out value="${actor.name}" />
-					</p>
-				</div>
-			</jstl:when>
-		</jstl:choose>
-		<jstl:choose>
-			<jstl:when test="${!isFollowing}">
-				<div>
-					<a href="user/follow.do?actorId=${actor.id}"> <spring:message
-							code="actor.follow" />
-					</a>
-				</div>
-			</jstl:when>
-			<jstl:otherwise>
-				<div>
-					<a href="user/unfollow.do?actorId=${actor.id}"> <spring:message
-							code="actor.unfollow" />
-					</a>
-				</div>
-			</jstl:otherwise>
-		</jstl:choose>
-	</jstl:if>
-</security:authorize>
-<!-- FIN Para mostrar bot�n de follow/unfollow y mensaje de operaci�n -->
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="styles/entry.css" type="text/css">
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<table>
-	<tr>
-		<th><spring:message code="actor.name" /></th>
-		<td><jstl:out value="${actor.name}" /></td>
-	</tr>
 
-	<tr>
-		<th><spring:message code="actor.surname" /></th>
-		<td><jstl:out value="${actor.surname}" /></td>
-	</tr>
-	<tr>
-		<th><spring:message code="actor.address" /></th>
-		<td><jstl:out value="${actor.address}" /></td>
-	</tr>
-	<tr>
-		<th><spring:message code="actor.email" /></th>
-		<td><jstl:out value="${actor.email}" /></td>
-	</tr>
-	<tr>
-		<th><spring:message code="actor.phoneNumber" /></th>
-		<td><jstl:out value="${actor.phoneNumber}" /></td>
-	</tr>
-</table>
-<jstl:if test="${actorType eq 'user'}">
-	<h3 id="chirpList">
-		<spring:message code="user.chirps.list" />
-	</h3>
-	<spring:message code="chirp.Date.format" var="userChirpDateFormat" />
-	<display:table name="userChirps" id="chirpRow" pagesize="5"
-		requestURI="${articleURI}#chirpList">
-		<display:column property="title" titleKey="user.title" />
-		<display:column property="description" titleKey="user.description" />
-		<display:column property="pubMoment" format="{0,date,${userChirpDateFormat}}" titleKey="user.pubMoment" />
-	</display:table>
-
-	<security:authorize access="hasRole('USER')">
-		<jstl:if test="${isMyProfile}">
-			<div>
-				<a href="chirp/user/edit.do"> <spring:message
-						code="actor.chirp.create" />
-				</a>
-			</div>
+<div class="container-fluid">
+<jstl:choose>
+	<jstl:when test="${actorNull}">
+		<p><spring:message code="actor.error.null" /></p>
+	</jstl:when>
+	<jstl:when test="${entryNull}">
+		<p><spring:message code="actor.entry.null" /></p>
+	</jstl:when>
+	<jstl:otherwise>
+		<table class="">
+			<tr>
+				<th><spring:message code="actor.name" /></th>
+				<td><jstl:out value="${actor.name}" /></td>
+			</tr>
+		
+			<tr>
+				<th><spring:message code="actor.surname" /></th>
+				<td><jstl:out value="${actor.surname}" /></td>
+			</tr>
+			<tr>
+				<th><spring:message code="actor.address" /></th>
+				<td><jstl:out value="${actor.address}" /></td>
+			</tr>
+			<tr>
+				<th><spring:message code="actor.email" /></th>
+				<td><jstl:out value="${actor.email}" /></td>
+			</tr>
+			<tr>
+				<th><spring:message code="actor.phoneNumber" /></th>
+				<td><jstl:out value="${actor.phoneNumber}" /></td>
+			</tr>
+			<jstl:if test="${actorType eq 'student'}">
+				<tr>
+					<th><spring:message code="student.comment" /></th>
+					<td><jstl:out value="${actor.comment}" /></td>
+				</tr>
+				<tr>
+					<th><spring:message code="student.classGroup" /></th>
+					<td><jstl:out value="${actor.classGroup.name}" /></td>
+				</tr>
+			</jstl:if>
+			
+			<jstl:if test="${actorType eq 'teacher'}">
+				<tr>
+					<th><spring:message code="teacher.school" /></th>
+					<td><jstl:out value="${actor.school.nameSchool}" /></td>
+				</tr>
+			</jstl:if>
+			<jstl:if test="${isMyProfile}">
+				<jstl:if test="${actorType eq 'parent'}">
+		
+					<display:table pagesize="5" class="table table-striped table-bordered"
+						name="${actor.students}" requestURI="actor/myDisplay.do"
+						id="rowParentStudent">
+		
+						<display:column titleKey="actor.name" sortable="false">
+							<jstl:out value="${rowParentStudent.name}" />
+						</display:column>
+						<display:column titleKey="actor.surname" sortable="false">
+							<jstl:out value="${rowParentStudent.surname}" />
+						</display:column>
+						<display:column titleKey="student.edit" sortable="false">
+							<a href="student/edit.do?actorId=${rowParentStudent.id}"> <spring:message
+									code="student.edit" />
+							</a>
+						</display:column>
+						<display:column titleKey="parents.marks" sortable="false">
+							<a href="mark/parent/list.do?studentId=${rowParentStudent.id}"> <spring:message
+									code="parents.marks" />
+							</a>
+						</display:column>
+		
+					</display:table>
+				</jstl:if>
+			</jstl:if>
+		
+			<jstl:if test="${actorType eq 'agent'}">
+				<tr>
+					<th><spring:message code="agent.taxCode" /></th>
+					<td><jstl:out value="${actor.taxCode}" /></td>
+				</tr>
+			</jstl:if>
+		</table>
+		
+		
+		<security:authorize access="isAuthenticated()">
+			<jstl:if test="${isMyProfile}">
+				<jstl:if test="${actorType eq 'agent' || actorType eq 'teacher'|| actorType eq 'admin'|| actorType eq 'parent'}">
+					<div>
+						<a href="${actorType}/edit.do"> <spring:message
+								code="actor.edit" />
+						</a>
+					</div>
+					<br/>
+				</jstl:if>
+			</jstl:if>
+		</security:authorize>
+		
+		
+		<jstl:if test="${actorType eq 'teacher'}">
+			<jstl:choose>
+				<jstl:when test="${display}">
+					<ul class="nav nav-tabs">
+						<li><a href="${uriList}"><spring:message code="teacher.list.entry" /></a></li>
+						<li class="active"><a href="${uriEntry}"><spring:message code="teacher.display.entry" /></a></li>
+					</ul>	
+					<br/>
+					<br/>
+					<div class="container2">
+						<div class="row1">
+							<div class="title">
+								<p><b><jstl:out value="${entry.title}" /></b></p>
+						  	</div>
+							<div class="moment">
+								<spring:message code="entry.Date.format" var="entryDateFormat" />
+								<p><fmt:formatDate pattern="${entryDateFormat}" value="${entry.moment}" /></p>
+						  	</div>
+						</div>
+						<div class="row2">
+							<div class="body">
+						    	<p><jstl:out value="${entry.body}" /></p>
+						  	</div>
+						</div>
+					</div>
+					<br/>
+				
+				</jstl:when>
+				<jstl:otherwise>
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="${uriList}"><spring:message code="teacher.list.entry" /></a></li>
+					</ul>
+					<display:table pagesize="4" class="table table-striped table-bordered" name="entries"
+						requestURI="${uriList}" id="rowEntry">
+					
+						<spring:message code="entry.Date.format" var="entryDateFormat" />
+						
+						<display:column property="moment"  titleKey="entry.moment" format ="{0,date,${entryDateFormat}}"/>
+						
+						<display:column titleKey="entry.title">
+							<jstl:out value="${rowEntry.title}" />
+						</display:column>
+						
+						<display:column titleKey="entry.display">
+							<a href="${uriEntryDisplay}${rowEntry.id }">
+								<spring:message code="entry.display" />
+							</a>
+						</display:column>
+					
+					</display:table>
+				
+					<jstl:if test="${myList}">
+						<div>
+							<a href="entry/teacher/edit.do">
+								<spring:message code="entry.create" />
+							</a>
+						</div>
+					</jstl:if>
+				</jstl:otherwise>
+			</jstl:choose>
+		
 		</jstl:if>
-	</security:authorize>
-
-	<h3 id="articleList">
-		<spring:message code="user.articles.list" />
-	</h3>
-	<spring:message code="article.Date.format" var="articleDateFormat" />
-	<display:table name="userArticles" id="articleRow" pagesize="5"
-		requestURI="${articleURI}#articleList">
-
-		<display:column titleKey="user.title">
-			<a href="article/display.do?articleId=${articleRow.id}"> <jstl:out
-					value="${articleRow.title}" />
-			</a>
-		</display:column>
-		<display:column titleKey="user.newspaper">
-			<a href="newspaper/display.do?newspaperId=${articleRow.newspaper.id}">
-				<jstl:out value="${articleRow.newspaper.title}" />
-			</a>
-		</display:column>
-		<display:column property="pubMoment" format="{0,date,${articleDateFormat}}" titleKey="user.pubMoment" />
-	</display:table>
-
-	<security:authorize access="hasRole('USER')">
-		<jstl:if test="${isMine}">
-			<div>
-				<a href="article/user/create.do"> <spring:message
-						code="actor.user.article" />
-				</a>
-			</div>
-		</jstl:if>
-	</security:authorize>
-
-</jstl:if>
-
-<security:authorize access="isAuthenticated()">
-	<jstl:if test="${isMyProfile}">
-		<div>
-			<a href="${actorType}/edit.do"> <spring:message code="actor.edit" />
-			</a>
-		</div>
-	</jstl:if>
-</security:authorize>
+	
+	</jstl:otherwise>
+</jstl:choose>
+</div>

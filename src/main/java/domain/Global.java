@@ -9,6 +9,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Global extends DomainEntity {
@@ -16,7 +18,7 @@ public class Global extends DomainEntity {
 	private Collection<String>	spamWords;
 	private Collection<String>	dangerousWords;
 	private int					wordsLimit;
-	private Double				price;
+	private double				price;
 	private String				payPalEmail;
 
 
@@ -40,6 +42,7 @@ public class Global extends DomainEntity {
 		this.dangerousWords = dangerousWords;
 	}
 
+	@Range(min = 0)
 	public int getWordsLimit() {
 		return this.wordsLimit;
 	}

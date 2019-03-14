@@ -1,5 +1,5 @@
 /*
- * StringToAdministratorConverter.java
+ * StringToAgentConverter.java
  * 
  * Copyright (C) 2017 Universidad de Sevilla
  * 

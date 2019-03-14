@@ -2,6 +2,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class ParentsGroupController extends AbstractController {
 	@Autowired
 	ParentsGroupService	parentsGroupService;
 	@Autowired
-	ActorService actorService;
+	ActorService		actorService;
 
 
 	// Panic handler ----------------------------------------------------------
@@ -34,17 +35,19 @@ public class ParentsGroupController extends AbstractController {
 	@RequestMapping("/list")
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<ParentsGroup> all = this.parentsGroupService.findAll();
-		result = new ModelAndView("parentsGroup/general/list");
+		Collection<ParentsGroup> all = new HashSet<>(this.parentsGroupService.findAll());
+		result = createModelAndView("parentsGroup/general/list");
 		result.addObject("uri", "parentsGroup/general/list.do");
-		result.addObject("parentsGroup",all);
+		result.addObject("parentsGroups", all);
 		//Para comprobar si el grupo es del que esta logueado o no
 		final Authority authority = new Authority();
 		authority.setAuthority(Authority.PARENT);
-		if(this.actorService.checkAuthenticate() && this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+		final Authority authorityTeacher = new Authority();
+		authorityTeacher.setAuthority(Authority.TEACHER);
+		if (this.actorService.checkAuthenticate() && (this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority) || this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authorityTeacher))) {
 			result.addObject("logueadoId", this.actorService.findByPrincipal().getId());
 		}
-		//---------------------------------------------------------
+
 		return result;
 	}
 

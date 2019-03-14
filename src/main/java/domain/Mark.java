@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -20,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Mark extends DomainEntity {
 
 	private Date	date;
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.BASIC)
 	private String	comment;
 	private double	value;
 

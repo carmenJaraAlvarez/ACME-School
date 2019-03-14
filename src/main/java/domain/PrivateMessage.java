@@ -1,13 +1,12 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -24,10 +23,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class PrivateMessage extends DomainEntity {
 
 	private Date	sendMoment;
+	@SafeHtml
 	private String	subject;
 	private String	body;
 	private String	priority;
-	private boolean	ofTheSystem;
 
 
 	@NotNull
@@ -48,7 +47,9 @@ public class PrivateMessage extends DomainEntity {
 	public void setSubject(final String subject) {
 		this.subject = subject;
 	}
+
 	@NotBlank
+	@Lob
 	public String getBody() {
 		return this.body;
 	}
@@ -66,52 +67,21 @@ public class PrivateMessage extends DomainEntity {
 		this.priority = priority;
 	}
 
-	public boolean getOfTheSystem() {
-		return this.ofTheSystem;
-	}
-
-	public void setOfTheSystem(final boolean ofTheSystem) {
-		this.ofTheSystem = ofTheSystem;
-	}
-
 
 	// Relationships ----------------------------------------------------------
 
-	private Actor				actorSender;
-	private Collection<Actor>	actorReceivers;
-	private Collection<Folder>	folders;
+	private Actor	actorSender;
 
 
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = false)
 	@Valid
+	@NotNull
 	public Actor getActorSender() {
 		return this.actorSender;
 	}
 
 	public void setActorSender(final Actor actorSender) {
 		this.actorSender = actorSender;
-	}
-
-	@ManyToMany(mappedBy = "messagesReceived")
-	@Valid
-	@NotEmpty
-	public Collection<Actor> getActorReceivers() {
-		return this.actorReceivers;
-	}
-
-	public void setActorReceivers(final Collection<Actor> actorReceivers) {
-		this.actorReceivers = actorReceivers;
-	}
-
-	@ManyToMany(mappedBy = "privateMessages")
-	@Valid
-	@NotNull
-	public Collection<Folder> getFolders() {
-		return this.folders;
-	}
-
-	public void setFolders(final Collection<Folder> folders) {
-		this.folders = folders;
 	}
 
 }

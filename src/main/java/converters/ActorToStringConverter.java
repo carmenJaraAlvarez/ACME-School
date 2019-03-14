@@ -23,7 +23,6 @@ public class ActorToStringConverter implements Converter<Actor, String> {
 	@Override
 	public String convert(final Actor actor) {
 		String result;
-
 		if (actor == null)
 			result = null;
 		else

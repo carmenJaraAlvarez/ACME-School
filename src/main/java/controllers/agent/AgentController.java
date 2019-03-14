@@ -56,11 +56,10 @@ public class AgentController extends AbstractController {
 	}
 
 	protected ModelAndView createEditModelAndView(final ActorForm actorForm, final String message) {
-		final ModelAndView result = new ModelAndView("actor/edit");
+		final ModelAndView result = createModelAndView("actor/edit");
 		result.addObject("actorForm", actorForm);
 		result.addObject("message", message);
 		result.addObject("direction", "agent/edit.do");
-		result.addObject("requestUri", "/actor/myDisplay.do");
 		result.addObject("actorType", "agent");
 		return result;
 	}

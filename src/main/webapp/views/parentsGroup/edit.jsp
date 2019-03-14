@@ -10,24 +10,29 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
 
-<form:form modelAttribute="parentsGroup">
+<div class="container-fluid">
 
+<form:form action="parentsGroup/parent/edit.do" modelAttribute="parentsGroupEditRawForm">
+	<form:hidden path="id" />
+	<form:hidden path="version" />
+
+
+	
 	<acme:textbox code="parentsGroup.name" path="name" />
-	<acme:textbox code="parentsGroup.image" path="image" />
+	<acme:textbox code="parentsGroup.image" path="url" />
 	<acme:textbox code="parentsGroup.description" path="description" />
-	<br />
+
+	<br>
+
 
 	<acme:submit name="save" code="parentsGroup.save" />
+	<acme:cancel code="parentsGroup.cancel" url="parentsGroup/parent/mylist.do" />&nbsp; 
 
-<!-- 
-	<jstl:if test="">
-		<acme:submit name="delete" code="parentsGroup.delete" />
-	</jstl:if>
- -->
 
-	<acme:cancel code="parentsGroup.cancel" url="#" />
 
 
 
 </form:form>
+</div>

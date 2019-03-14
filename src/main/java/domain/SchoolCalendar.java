@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -23,6 +24,7 @@ public class SchoolCalendar extends DomainEntity {
 	private String	image;
 
 
+	@Pattern(regexp = "^\\d{4}\\/\\d{4}$")
 	@NotBlank
 	public String getCourse() {
 		return this.course;

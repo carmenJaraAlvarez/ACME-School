@@ -86,11 +86,23 @@ public class AdministratorService {
 		final Administrator adminBBDD = this.findOne(actorForm.getId());
 		final Administrator result = actorForm.getAdministrator();
 		result.setUserAccount(adminBBDD.getUserAccount());
-
+		result.setFolders(adminBBDD.getFolders());
+		result.setMessagesReceived(adminBBDD.getMessagesReceived());
+		result.setMessagesSent(adminBBDD.getMessagesSent());
 		this.validator.validate(result, binding);
 
 		return result;
 
+	}
+	public boolean checkIsAdmin() {
+
+		final boolean res = true;
+		try {
+			this.findByPrincipal();
+		} catch (final Throwable oops) {
+			return false;
+		}
+		return res;
 	}
 
 }

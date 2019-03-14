@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +26,7 @@ public class Entry extends DomainEntity {
 	private String	title;
 	@SafeHtml
 	private String	body;
-	private String	Attachments;
+
 
 
 	@NotNull
@@ -49,20 +50,13 @@ public class Entry extends DomainEntity {
 	}
 
 	@NotBlank
+	@Lob
 	public String getBody() {
 		return this.body;
 	}
 
 	public void setBody(final String body) {
 		this.body = body;
-	}
-
-	public String getAttachments() {
-		return this.Attachments;
-	}
-
-	public void setAttachments(final String attachments) {
-		this.Attachments = attachments;
 	}
 
 

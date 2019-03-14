@@ -34,7 +34,7 @@ public class Subject extends DomainEntity {
 
 	private Collection<Homework>	homeworks;
 	private Level					level;
-	private Collection<Mark>		marks;
+
 	private Collection<ClassTime>	classTimes;
 
 
@@ -58,17 +58,6 @@ public class Subject extends DomainEntity {
 
 	public void setLevel(final Level level) {
 		this.level = level;
-	}
-
-	@Valid
-	@NotNull
-	@OneToMany(mappedBy = "subject")
-	public Collection<Mark> getMarks() {
-		return this.marks;
-	}
-
-	public void setMarks(final Collection<Mark> marks) {
-		this.marks = marks;
 	}
 
 	@Valid

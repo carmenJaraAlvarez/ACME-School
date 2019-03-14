@@ -1,5 +1,5 @@
 /*
- * AdministratorToStringConverter.java
+ * ClassGroupToStringConverter.java
  * 
  * Copyright (C) 2017 Universidad de Sevilla
  * 

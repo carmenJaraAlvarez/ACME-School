@@ -29,11 +29,16 @@
 	<bean id="administrator1" class="domain.Administrator">
 		<property name="name" value="Administrator" />
 		<property name="surname" value="Admin Admin" />
-		<property name="email" value="aaaaaa@alum.us.es" />
+		<property name="email" value="admin@email.com" />
 		<property name="phoneNumber" value="+1651253" />
-		<property name="address" value="" />
+		<property name="address" value="admin address" />
 		<property name="folders">
 			<list>
+				<ref bean="inBoxAdministrator1" />
+				<ref bean="outBoxAdministrator1" />
+				<ref bean="notificationBoxAdministrator1" />
+				<ref bean="trashBoxAdministrator1" />
+				<ref bean="spamBoxAdministrator1" />
 			</list>
 		</property>
 		<property name="messagesSent">
@@ -45,6 +50,121 @@
 			</list>
 		</property>
 		<property name="userAccount" ref="ua_administrator1" />
+	</bean>
+
+	<bean id="inBoxAdministrator1" class="domain.Folder">
+		<property name="name" value="in box" />
+		<property name="ofTheSystem" value="true" />
+		<!-- Relaciones -->
+		<property name="privateMessages">
+			<list>
+			</list>
+		</property>
+		<property name="childFolders">
+			<list>
+			</list>
+		</property>
+		<property name="fatherFolder">
+			<null />
+		</property>
+		<property name="actor" ref="administrator1" />
+	</bean>
+
+	<bean id="outBoxAdministrator1" class="domain.Folder">
+		<property name="name" value="out box" />
+		<property name="ofTheSystem" value="true" />
+		<!-- Relaciones -->
+		<property name="privateMessages">
+			<list>
+			</list>
+		</property>
+		<property name="childFolders">
+			<list>
+			</list>
+		</property>
+		<property name="fatherFolder">
+			<null />
+		</property>
+		<property name="actor" ref="administrator1" />
+	</bean>
+
+	<bean id="notificationBoxAdministrator1" class="domain.Folder">
+		<property name="name" value="notification box" />
+		<property name="ofTheSystem" value="true" />
+		<!-- Relaciones -->
+		<property name="privateMessages">
+			<list>
+			</list>
+		</property>
+		<property name="childFolders">
+			<list>
+			</list>
+		</property>
+		<property name="fatherFolder">
+			<null />
+		</property>
+		<property name="actor" ref="administrator1" />
+	</bean>
+
+	<bean id="trashBoxAdministrator1" class="domain.Folder">
+		<property name="name" value="trash box" />
+		<property name="ofTheSystem" value="true" />
+		<!-- Relaciones -->
+		<property name="privateMessages">
+			<list>
+			</list>
+		</property>
+		<property name="childFolders">
+			<list>
+			</list>
+		</property>
+		<property name="fatherFolder">
+			<null />
+		</property>
+		<property name="actor" ref="administrator1" />
+	</bean>
+
+	<bean id="spamBoxAdministrator1" class="domain.Folder">
+		<property name="name" value="spam box" />
+		<property name="ofTheSystem" value="true" />
+		<!-- Relaciones -->
+		<property name="privateMessages">
+			<list>
+			</list>
+		</property>
+		<property name="childFolders">
+			<list>
+			</list>
+		</property>
+		<property name="fatherFolder">
+			<null />
+		</property>
+		<property name="actor" ref="administrator1" />
+	</bean>
+
+	<bean id="global" class="domain.Global">
+		<property name="spamWords">
+			<list>
+				<value>viagra</value>
+				<value>cialis</value>
+				<value>sex</value>
+				<value>jes extender</value>
+			</list>
+		</property>
+		<property name="dangerousWords">
+			<list>
+				<value>puta</value>
+				<value>sexo</value>
+				<value>viagra</value>
+				<value>cialis</value>
+				<value>sex</value>
+				<value>zorra</value>
+				<value>imbécil</value>
+			</list>
+		</property>
+		<property name="wordsLimit" value="20" />
+		<property name="price" value="180.0" />
+		<property name="payPalEmail" value="acmeSchool4@gmail.com" />
 	</bean>
 
 </beans>

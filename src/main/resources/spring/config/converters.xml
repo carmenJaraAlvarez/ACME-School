@@ -12,26 +12,95 @@
 	">
 
 	<util:list id="converters">
+		<bean class="converters.FolderToStringConverter" />
+		<bean class="converters.StringToFolderConverter" />
+
+		<bean class="converters.MessageToStringConverter" />
+		<bean class="converters.StringToMessageConverter" />
+
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+
+		<bean class="converters.AdministratorToStringConverter" />
+		<bean class="converters.StringToAdministratorConverter" />
+
+		<bean class="converters.AdvertisementToStringConverter" />
+		<bean class="converters.StringToAdvertisementConverter" />
 
 		<bean class="converters.AgentToStringConverter" />
 		<bean class="converters.StringToAgentConverter" />
 
-		<bean class="converters.ActorToStringConverter" />
-		<bean class="converters.StringToActorConverter" />
-		
+		<bean class="converters.AuthorityToStringConverter" />
+		<bean class="converters.StringToAuthorityConverter" />
+
+		<bean class="converters.ChatRoomToStringConverter" />
+		<bean class="converters.StringToChatRoomConverter" />
+
 		<bean class="converters.ClassGroupToStringConverter" />
 		<bean class="converters.StringToClassGroupConverter" />
-		
-		<bean class="converters.SchoolToStringConverter" />
-		<bean class="converters.StringToSchoolConverter" />
-		
+
+		<bean class="converters.ClassTimeToStringConverter" />
+		<bean class="converters.StringToClassTimeConverter" />
+
+		<bean class="converters.CreditCardToStringConverter" />
+		<bean class="converters.StringToCreditCardConverter" />
+
+		<bean class="converters.EntryToStringConverter" />
+		<bean class="converters.StringToEntryConverter" />
+
+		<bean class="converters.EventToStringConverter" />
+		<bean class="converters.StringToEventConverter" />
+
+		<bean class="converters.ExtracurricularActivityToStringConverter" />
+		<bean class="converters.StringToExtracurricularActivityConverter" />
+
+		<bean class="converters.FolderToStringConverter" />
+		<bean class="converters.StringToFolderConverter" />
+
+		<bean class="converters.GlobalToStringConverter" />
+		<bean class="converters.StringToGlobalConverter" />
+
+		<bean class="converters.HomeworkToStringConverter" />
+		<bean class="converters.StringToHomeworkConverter" />
+
 		<bean class="converters.LevelToStringConverter" />
 		<bean class="converters.StringToLevelConverter" />
-		
+
+		<bean class="converters.LocationToStringConverter" />
+		<bean class="converters.StringToLocationConverter" />
+
+		<bean class="converters.MarkToStringConverter" />
+		<bean class="converters.StringToMarkConverter" />
+
+		<bean class="converters.MessageToStringConverter" />
+		<bean class="converters.StringToMessageConverter" />
+
+		<bean class="converters.ParentsGroupToStringConverter" />
+		<bean class="converters.StringToParentsGroupConverter" />
+
+		<bean class="converters.ParentToStringConverter" />
+		<bean class="converters.StringToParentConverter" />
+
+		<bean class="converters.PrivateMessageToStringConverter" />
+		<bean class="converters.StringToPrivateMessageConverter" />
+
+		<bean class="converters.SchoolCalendarToStringConverter" />
+		<bean class="converters.StringToSchoolCalendarConverter" />
+
+		<bean class="converters.SchoolToStringConverter" />
+		<bean class="converters.StringToSchoolConverter" />
+
+		<bean class="converters.StudentMessageToStringConverter" />
+		<bean class="converters.StringToStudentMessageConverter" />
+
+		<bean class="converters.StudentToStringConverter" />
+		<bean class="converters.StringToStudentConverter" />
+
+		<bean class="converters.SubjectToStringConverter" />
+		<bean class="converters.StringToSubjectConverter" />
+
 		<bean class="converters.TeacherToStringConverter" />
 		<bean class="converters.StringToTeacherConverter" />
-		
-		
 
 	</util:list>
 

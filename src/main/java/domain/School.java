@@ -6,10 +6,10 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -41,7 +41,7 @@ public class School extends DomainEntity {
 		this.nameSchool = nameSchool;
 	}
 
-	@NotBlank
+
 	public String getAddress() {
 		return this.address;
 	}
@@ -50,7 +50,8 @@ public class School extends DomainEntity {
 		this.address = address;
 	}
 
-	@NotBlank
+
+	@Pattern(regexp = "^\\+?\\d+$||^$")
 	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}
@@ -59,7 +60,7 @@ public class School extends DomainEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	@NotBlank
+
 	@Email
 	public String getEmailSchool() {
 		return this.emailSchool;
@@ -69,7 +70,7 @@ public class School extends DomainEntity {
 		this.emailSchool = emailSchool;
 	}
 
-	@NotBlank
+
 	@URL
 	public String getImage() {
 		return this.image;
@@ -86,7 +87,7 @@ public class School extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "school", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "school"/* , fetch = FetchType.EAGER */)
 	public Collection<Teacher> getTeachers() {
 		return this.teachers;
 	}
@@ -97,7 +98,7 @@ public class School extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "school", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "school"/* , fetch = FetchType.EAGER */)
 	public Collection<Level> getLevels() {
 		return this.levels;
 	}

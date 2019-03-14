@@ -20,59 +20,55 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="styles/messages.css" type="text/css">
 
-<form:form action="global/administrator/edit.do" modelAttribute="global">
+<div class="container-fluid">
 
-	<form:hidden path="id" />
-	<form:hidden path="version" />
+	
+	<jstl:choose>
+		<jstl:when test="${saved}">
+			<div class="verde">
+				<spring:message code="global.save.sucessfull" />
+			</div>
+			<br/>
+		</jstl:when>
+	</jstl:choose>
+	<form:form action="global/administrator/edit.do"
+		modelAttribute="global">
 
-	<div>
-		<form:label path="spamWords">
-			<spring:message code="global.spamWords" />:
-		</form:label>
-		<form:input path="spamWords" />
-		<form:errors cssClass="error" path="spamWords" />
-	</div>
+		<form:hidden path="id" />
+		<form:hidden path="version" />
 
-	<div>
-		<form:label path="dangerousWords">
-			<spring:message code="global.dangerousWords" />:
-		</form:label>
-		<form:input path="dangerousWords" />
-		<form:errors cssClass="error" path="dangerousWords" />
-	</div>
+		<div>
+			<acme:textbox code="global.spamWords" path="spamWords" />
+		</div>
 
-	<div>
-		<form:label path="wordsLimit">
-			<spring:message code="global.wordsLimit" />:
-		</form:label>
-		<form:input path="wordsLimit" />
-		<form:errors cssClass="error" path="wordsLimit" />
-	</div>
+		<div>
+			<acme:textbox code="global.dangerousWords" path="dangerousWords" />
+		</div>
 
-	<div>
-		<form:label path="price">
-			<spring:message code="global.price" />:
-		</form:label>
-		<form:input path="price" />
-		<form:errors cssClass="error" path="price" />
-	</div>
+		<div>
+			<acme:textbox code="global.wordsLimit" path="wordsLimit" />
+		</div>
 
-	<div>
-		<form:label path="payPalEmail">
-			<spring:message code="global.payPalEmail" />:
-		</form:label>
-		<form:input path="payPalEmail" />
-		<form:errors cssClass="error" path="payPalEmail" />
-	</div>
+		<div>
+			<acme:textbox code="global.price" path="price" />
+		</div>
 
-	<br />
+		<div>
+			<acme:textbox code="global.payPalEmail" path="payPalEmail" />
+		</div>
 
-	<hr>
+		<br />
 
-	<input type="submit" name="save"
-		onclick="return confirm('Are you sure you want to continue?')"
-		value="<spring:message code="global.save" />" />&nbsp; 
-	<br />
+		<hr>
+		<button type="submit" name="save" class="btn btn-primary"
+			onclick="return confirm('<spring:message code="global.confirm.continue" />')">
+			<spring:message code="global.save" />
+		</button>
+		<br />
 
-</form:form>
+	</form:form>
+</div>

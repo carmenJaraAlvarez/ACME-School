@@ -1,5 +1,5 @@
 /*
- * StringToAdministratorConverter.java
+ * StringToLevelConverter.java
  * 
  * Copyright (C) 2017 Universidad de Sevilla
  * 

@@ -77,6 +77,10 @@ public class ActorService {
 		return this.actorRepository.findByUserAccount(userAccount.getId());
 	}
 
+	public Actor findByUserName(final String userName) {
+		return this.actorRepository.findByUserName(userName);
+	}
+
 	public Actor findAdmin() {
 		final List<Actor> actores = this.actorRepository.findAll();
 		Actor res = null;

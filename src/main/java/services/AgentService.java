@@ -16,8 +16,8 @@ import repositories.AgentRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Advertisement;
 import domain.Agent;
-import domain.Announcement;
 import domain.Folder;
 import domain.PrivateMessage;
 import forms.ActorForm;
@@ -54,6 +54,15 @@ public class AgentService {
 		final Agent result = this.agentRepository.save(agent);
 
 		return this.agentRepository.save(result);
+	}
+	
+	public Agent saveForFolders(final Agent agent) {
+		//this.checkAuthenticate();
+		//this.checkPrincipal(agent);
+		this.checkConcurrency(agent);
+		final Agent result = this.agentRepository.save(agent);
+
+		return result;
 	}
 
 	public Agent saveEdit(final Agent agent) {
@@ -116,7 +125,7 @@ public class AgentService {
 		authority.setAuthority(Authority.AGENT);
 		userAccount.getAuthorities().add(authority);
 		this.validator.validate(userAccount, binding);
-		
+
 		final Md5PasswordEncoder encode = new Md5PasswordEncoder();
 		final String pwdHash = encode.encodePassword(userAccount.getPassword(), null);
 		userAccount.setPassword(pwdHash);
@@ -124,9 +133,10 @@ public class AgentService {
 		result.setFolders(new ArrayList<Folder>());
 		result.setMessagesReceived(new ArrayList<PrivateMessage>());
 		result.setMessagesSent(new ArrayList<PrivateMessage>());
-		result.setAnnouncements(new ArrayList<Announcement>());
-		
-		this.validator.validate(result, binding);
+		result.setAdvertisements(new ArrayList<Advertisement>());
+
+		if (binding != null)
+			this.validator.validate(result, binding);
 
 		return result;
 
@@ -141,7 +151,7 @@ public class AgentService {
 		result.setFolders(agentBBDD.getFolders());
 		result.setMessagesReceived(agentBBDD.getMessagesReceived());
 		result.setMessagesSent(agentBBDD.getMessagesSent());
-		result.setAnnouncements(agentBBDD.getAnnouncements());
+		result.setAdvertisements(agentBBDD.getAdvertisements());
 
 		this.validator.validate(result, binding);
 

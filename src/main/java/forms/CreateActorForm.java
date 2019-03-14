@@ -60,7 +60,7 @@ public class CreateActorForm {
 	}
 
 	
-	@NotBlank
+
 	public String getName() {
 		return this.name;
 	}
@@ -69,7 +69,7 @@ public class CreateActorForm {
 		this.name = name;
 	}
 
-	@NotBlank
+
 	public String getSurname() {
 		return this.surname;
 	}
@@ -78,7 +78,7 @@ public class CreateActorForm {
 		this.surname = surname;
 	}
 
-	@NotBlank
+
 	public String getEmail() {
 		return this.email;
 	}
@@ -87,8 +87,7 @@ public class CreateActorForm {
 		this.email = email;
 	}
 
-	@Size(min = 5, max = 32)
-	@Column(unique = true)
+
 	public String getUsername() {
 		return this.username;
 	}
@@ -97,7 +96,7 @@ public class CreateActorForm {
 		this.username = username;
 	}
 
-	@Size(min = 5, max = 32)
+
 	public String getPassword() {
 		return this.password;
 	}

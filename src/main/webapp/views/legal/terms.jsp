@@ -16,6 +16,9 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+
+<div class="container-fluid">
 <p><b><spring:message code="legal.terms.data" /></b></p>
 <p><spring:message code="legal.terms.data.text" /></p>
 <p><b><spring:message code="legal.terms.use" /></b></p>
@@ -33,7 +36,14 @@
 <jstl:forEach items="${tabooWords}" var="taboo">"${taboo}
 "
 </jstl:forEach>
+</p>
 
-<spring:message code="legal.terms.taboo2" /></p>
+<p><spring:message code="legal.terms.dangerousWords" />
+<jstl:forEach items="${dangerousWords}" var="dangerous">"${dangerous}
+"
+</jstl:forEach>
+<spring:message code="legal.terms.dangerousWords2" />
+</p>
 
 <p><spring:message code="legal.terms.text" /></p>
+</div>

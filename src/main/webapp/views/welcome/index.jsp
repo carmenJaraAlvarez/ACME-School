@@ -18,13 +18,16 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="styles/cookies.css" type="text/css">
 <!--//BLOQUE COOKIES-->
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+
+<div class="container-fluid">
 <div id="barraaceptacion">
     <div class="inner">
     	<spring:message	code="welcome.page.legal.cookiesEntry" />
         <a href="javascript:void(0);" class="ok" onclick="PonerCookie();">
         	<b><spring:message	code="welcome.page.legal.cookiesEntry.aceptar" /></b>
         </a> | 
-        <a href="https://www.agpd.es/portalwebAGPD/canaldocumentacion/cookies/index-ides-idphp.php" target="_blank" class="info">
+        <a href="https://www.agpd.es" target="_blank" class="info">
     		<spring:message	code="welcome.page.legal.cookiesEntry.info" />
     	</a>
     </div>
@@ -76,3 +79,4 @@
 	<spring:message code="welcome.dateformat" var="dateFormat" />
 	<fmt:formatDate pattern="${dateFormat}" value="${moment}" />
 </p>
+</div>

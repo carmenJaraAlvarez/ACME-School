@@ -10,31 +10,24 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
 
-<form:form action="school/parent/edit.do" modelAttribute="school">
+<div class="container-fluid">
+	<form:form action="school/parent/edit.do" modelAttribute="school">
 
-	<form:hidden path="id" />
-	<form:hidden path="version" />
-	<form:hidden path="teachers" />
-	<form:hidden path="levels" />
+		<form:hidden path="id" />
+		<form:hidden path="version" />
+		<form:hidden path="teachers" />
+		<form:hidden path="levels" />
 
-	<acme:textbox code="school.nameSchool" path="nameSchool" />
-	<acme:textbox code="school.address" path="address" />
-	<acme:textbox code="school.phoneNumber" path="phoneNumber" />
-	<acme:textbox code="school.emailSchool" path="emailSchool" />
-	<acme:textbox code="school.image" path="image" />
-	<br />
+		<acme:textbox code="school.nameSchool" path="nameSchool" />
+		<acme:textbox code="school.address" path="address" />
+		<acme:textbox code="school.phoneNumber" path="phoneNumber" placeholder="+34123456789"/>
+		<acme:textbox code="school.emailSchool" path="emailSchool" />
+		<acme:textbox code="school.image" path="image" />
+		<br />
 
-	<acme:submit name="save" code="school.save" />
-
-	<!-- 
-	<jstl:if test="">
-		<acme:submit name="delete" code="school.delete" />
-	</jstl:if>
- -->
-
-	<acme:cancel code="school.cancel" url="#" />
-
-
-
-</form:form>
+		<acme:submit name="save" code="school.save" />
+		<acme:cancel code="school.cancel" url="school/list.do" />
+	</form:form>
+</div>

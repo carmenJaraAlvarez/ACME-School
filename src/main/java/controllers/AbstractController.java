@@ -20,14 +20,14 @@ import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AnnouncementService;
-import domain.Announcement;
+import services.AdvertisementService;
+import domain.Advertisement;
 
 @Controller
 public class AbstractController {
 
 	@Autowired
-	private AnnouncementService	announcementService;
+	private AdvertisementService	advertisementService;
 
 
 	// Panic handler ----------------------------------------------------------
@@ -49,14 +49,16 @@ public class AbstractController {
 	public ModelAndView createModelAndView(final String viewName) {
 
 		//Para mostrar el banner del anuncio [inicio]
-		Map<String, String> model = new HashMap<String, String>();
-		Announcement announcement = this.announcementService.getValidRandom();
-		final String bannerAnnouncement = announcement.getBanner();
-		final String webAnnouncement = announcement.getWeb();
-		final String titleAnnouncement = announcement.getTitle();
-		model.put("bannerAnnouncement", bannerAnnouncement);
-		model.put("webAnnouncement", webAnnouncement);
-		model.put("titleAnnouncement", titleAnnouncement);
+		final Map<String, String> model = new HashMap<String, String>();
+		final Advertisement announcement = this.advertisementService.getValidRandom();
+		if (announcement != null) {
+			final String bannerAnnouncement = announcement.getBanner();
+			final String webAnnouncement = announcement.getWeb();
+			final String titleAnnouncement = announcement.getTitle();
+			model.put("bannerAnnouncement", bannerAnnouncement);
+			model.put("webAnnouncement", webAnnouncement);
+			model.put("titleAnnouncement", titleAnnouncement);
+		}
 		//Para mostrar el banner del anuncio [fin]
 
 		final ModelAndView result = new ModelAndView(viewName, model);

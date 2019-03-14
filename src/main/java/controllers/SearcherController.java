@@ -64,7 +64,7 @@ public class SearcherController extends AbstractController {
 	}
 
 	private ModelAndView createParentsGroupModelAndView(final String keyWord, final String search) {
-		ModelAndView result = new ModelAndView("search/parentsGroups");
+		ModelAndView result = createModelAndView("search/parentsGroups");
 		final Collection<ParentsGroup> parentsGroups = this.parentsGroupService.findByKeyWord(keyWord);
 		result.addObject("uri", "searcher/display.do");
 		result.addObject("parentsGroups", parentsGroups);
@@ -73,7 +73,7 @@ public class SearcherController extends AbstractController {
 		return result;
 	}
 	private ModelAndView createSchoolModelAndView(final String keyWord, final String search) {
-		ModelAndView result = new ModelAndView("search/schools");
+		ModelAndView result = createModelAndView("search/schools");
 		final Collection<School> schools = this.schoolService.findByKeyWord(keyWord);
 		result.addObject("uri", "searcher/display.do");
 		result.addObject("schools", schools);
@@ -83,7 +83,7 @@ public class SearcherController extends AbstractController {
 		return result;
 	}
 	private ModelAndView createDisplayModelAndView() {
-		ModelAndView result = new ModelAndView("search/display");
+		ModelAndView result = createModelAndView("search/display");
 		result.addObject("uri", "searcher/display.do");
 		result.addObject("search", "display");
 

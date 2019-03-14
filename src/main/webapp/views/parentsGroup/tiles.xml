@@ -15,12 +15,53 @@
 		<put-attribute name="body" value="/views/parentsGroup/list.jsp" />
 	</definition>
 	
-		<definition name="parentsGroup/parent/edit" extends="master.page">
+	<definition name="parentsGroup/parent/edit" extends="master.page">
 		<put-attribute name="title" value="Parent Group Edition" />
 		<put-attribute name="body" value="/views/parentsGroup/edit.jsp" />
 	</definition>
-			<definition name="parentsGroup/parent/mylist" extends="master.page">
+	
+	<definition name="parentsGroup/parent/mylist" extends="master.page">
 		<put-attribute name="title" value="My Parents Groups" />
 		<put-attribute name="body" value="/views/parentsGroup/list.jsp" />
+	</definition>
+	
+	<definition name="parentsGroup/teacher/mylist" extends="master.page">
+		<put-attribute name="title" value="My Parents Groups" />
+		<put-attribute name="body" value="/views/parentsGroup/list.jsp" />
+	</definition>
+	
+	<definition name="inscription/parent" extends="master.page">
+		<put-attribute name="title" value="Join a group" />
+		<put-attribute name="body" value="/views/parentsGroup/inscription.jsp" />
+	</definition>
+	
+	<definition name="inscription/teacher" extends="master.page">
+		<put-attribute name="title" value="Join a group" />
+		<put-attribute name="body" value="/views/parentsGroup/inscription.jsp" />
+	</definition>
+	
+	<definition name="parentsGroup/parent/create" extends="master.page">
+		<put-attribute name="title" value="Create Parents Group" />
+		<put-attribute name="body" value="/views/parentsGroup/create.jsp" />
+	</definition>
+		<definition name="parentsGroup/parent/display" extends="master.page">
+		<put-attribute name="title" value="Parents Group" />
+		<put-attribute name="body" value="/views/parentsGroup/display.jsp" />
+	</definition>
+			<definition name="parentsGroup/parent/createSecondStep" extends="master.page">
+		<put-attribute name="title" value="Create Parents Group" />
+		<put-attribute name="body" value="/views/parentsGroup/secondStep.jsp" />
+	</definition>
+		<definition name="parentsGroup/parent/createThirdStep" extends="master.page">
+		<put-attribute name="title" value="Create Parents Group" />
+		<put-attribute name="body" value="/views/parentsGroup/thirdStep.jsp" />
+	</definition>
+	<definition name="parentsGroup/parent/createFourthStep" extends="master.page">
+		<put-attribute name="title" value="Create Parents Group" />
+		<put-attribute name="body" value="/views/parentsGroup/fourthStep.jsp" />
+	</definition>
+			<definition name="parentsGroup/parent/createClass" extends="master.page">
+		<put-attribute name="title" value="Create Parents Group" />
+		<put-attribute name="body" value="/views/parentsGroup/createClass.jsp" />
 	</definition>
 </tiles-definitions>

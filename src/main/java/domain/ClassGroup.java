@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
@@ -22,6 +23,7 @@ public class ClassGroup extends DomainEntity {
 	private String	name;
 
 
+	@NotBlank
 	public String getName() {
 		return this.name;
 	}
@@ -33,9 +35,9 @@ public class ClassGroup extends DomainEntity {
 
 	private Collection<Teacher>			teachers;
 	private Collection<Student>			students;
-	private Level						level;
 	private Collection<ParentsGroup>	parentsGroups;
 	private Collection<ClassTime>		classTimes;
+	private Level						level;
 
 
 	@Valid

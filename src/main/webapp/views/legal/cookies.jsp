@@ -16,6 +16,10 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+
+<div class="container-fluid">
+
 <p><b><spring:message code="legal.cookies.title1" /></b></p>
 <p><spring:message code="legal.cookies.text1" /></p>
 <p><spring:message code="legal.cookies.text2" /></p>
@@ -23,3 +27,4 @@
 <p><spring:message code="legal.cookies.text3" /></p>
 <p><spring:message code="legal.cookies.text4" /></p>
 <p><spring:message code="legal.cookies.text5" /></p>
+</div>

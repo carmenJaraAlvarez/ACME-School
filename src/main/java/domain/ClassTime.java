@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -30,7 +31,9 @@ public class ClassTime extends DomainEntity {
 		this.day = day;
 	}
 
+	//"HH:mm-HH:mm" 24 H format
 	@NotBlank
+	@Pattern(regexp = "[0-2][0-9]:[0-5][0-9]-[0-2][0-9]:[0-5][0-9]")
 	public String getHour() {
 		return this.hour;
 	}

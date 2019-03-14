@@ -29,60 +29,102 @@
 	<security:http auto-config="true" use-expressions="true">
 	
 		<!-- Para todos -->
-		<security:intercept-url pattern="/" 									access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/welcome/index.do" 					access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/" 											access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/welcome/index.do" 							access="permitAll" 				requires-channel="https"/> 
 
-		<security:intercept-url pattern="/favicon.ico" 							access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/images/**" 							access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/scripts/**" 							access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/styles/**" 							access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/favicon.ico" 									access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/images/**" 									access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/scripts/**" 									access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/styles/**" 									access="permitAll" 				requires-channel="https"/> 
 
-		<security:intercept-url pattern="/views/misc/index.jsp" 				access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/security/login.do" 					access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/security/loginFailure.do" 			access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/legal/**" 							access="permitAll" 				requires-channel="https"/> 
-		<security:intercept-url pattern="/actor/createParent.do"				access="permitAll"				requires-channel="https"/>
-		<security:intercept-url pattern="/actor/createAgent.do"					access="permitAll"				requires-channel="https"/>	
-		<security:intercept-url pattern="/parentsGroup/general/list.do"			access="permitAll"				requires-channel="https"/>
-		<security:intercept-url pattern="/actor/createTeacher.do"				access="permitAll"	            requires-channel="https"/>			
-		<security:intercept-url pattern="/school/list.do"						access="permitAll"	            requires-channel="https"/>			
-		<security:intercept-url pattern="/searcher/display.do"					access="permitAll"	            requires-channel="https"/>			
+		<security:intercept-url pattern="/views/misc/index.jsp" 						access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/security/login.do" 							access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/security/loginFailure.do" 					access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/legal/**" 									access="permitAll" 				requires-channel="https"/> 
+		<security:intercept-url pattern="/actor/createParent.do"						access="permitAll"				requires-channel="https"/>
+		<security:intercept-url pattern="/actor/createAgent.do"							access="permitAll"				requires-channel="https"/>	
+		<security:intercept-url pattern="/parentsGroup/general/list.do"					access="permitAll"				requires-channel="https"/>
+		<security:intercept-url pattern="/actor/createTeacher.do"						access="permitAll"	            requires-channel="https"/>			
+		<security:intercept-url pattern="/school/list.do"								access="permitAll"	            requires-channel="https"/>			
+		<security:intercept-url pattern="/searcher/display.do"							access="permitAll"	            requires-channel="https"/>			
+		<security:intercept-url pattern="/schoolCalendar/list.do"						access="permitAll"	 			requires-channel="https"/>	
+		<security:intercept-url pattern="/schoolCalendar/display.do"					access="permitAll"	 			requires-channel="https"/>	
+		<security:intercept-url pattern="/subject/list.do"								access="permitAll"	 			requires-channel="https"/>	
+		<security:intercept-url pattern="/school/display.do**"							access="permitAll"	 			requires-channel="https"/>	
+		<security:intercept-url pattern="/teacher/list.do"							    access="permitAll"	 			requires-channel="https"/>	
+		<security:intercept-url pattern="/actor/display.do"							    access="permitAll"	 			requires-channel="https"/>	
+		<security:intercept-url pattern="/entry/display.do"							    access="permitAll"	 			requires-channel="https"/>	
 		
 	
-	
 		<!-- Para gente autenticada -->
-		<security:intercept-url pattern="/folder/actor/**" 						access="isAuthenticated()"  	requires-channel="https"/>	
-		<security:intercept-url pattern="/message/actor/**" 					access="isAuthenticated()" 		requires-channel="https"/>
-		<security:intercept-url pattern="/actor/MyDisplay.do"				    access="isAuthenticated()"		requires-channel="https"/>		
+		<security:intercept-url pattern="/folder/actor/**" 								access="isAuthenticated()"  	requires-channel="https"/>	
+		<security:intercept-url pattern="/message/actor/**" 							access="isAuthenticated()" 		requires-channel="https"/>
+		<security:intercept-url pattern="/actor/MyDisplay.do"				    		access="isAuthenticated()"		requires-channel="https"/>		
+		<security:intercept-url pattern="/privateMessage/actor/**"		 				access="isAuthenticated()" 		requires-channel="https"/>
 		
 
 		<!-- Para Admin -->
-		<security:intercept-url pattern="/administrator/edit.do" 			    access="hasRole('ADMIN')"    	requires-channel="https"/> 
-		<security:intercept-url pattern="/folder/administrator/**" 				access="hasRole('ADMIN')" 		requires-channel="https"/> 
-		<security:intercept-url pattern="/dashboard/**" 						access="hasRole('ADMIN')" 		requires-channel="https"/> 
-		<security:intercept-url pattern="/global/administrator/**" 				access="hasRole('ADMIN')" 		requires-channel="https"/> 
-		<security:intercept-url pattern="/advertisement/administrator/**" 		access="hasRole('ADMIN')" 		requires-channel="https"/>	
-
+		<security:intercept-url pattern="/privateMessage/administrator/**" 				access="hasRole('ADMIN')" 		requires-channel="https"/>
+		<security:intercept-url pattern="/administrator/edit.do" 					    access="hasRole('ADMIN')"    	requires-channel="https"/> 
+		<security:intercept-url pattern="/folder/administrator/**" 						access="hasRole('ADMIN')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/dashboard/**" 								access="hasRole('ADMIN')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/global/administrator/**" 						access="hasRole('ADMIN')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/advertisement/administrator/**" 				access="hasRole('ADMIN')" 		requires-channel="https"/>	
+		<security:intercept-url pattern="/schoolCalendar/administrator/**" 				access="hasRole('ADMIN')" 		requires-channel="https"/> 
+		
 		<!-- Para Agent -->
-		<security:intercept-url pattern="/advertisement/agent/list.do" 			access="hasRole('AGENT')" 		requires-channel="https"/> 
-		<security:intercept-url pattern="/advertisement/agent/create.do" 		access="hasRole('AGENT')" 		requires-channel="https"/> 
-		<security:intercept-url pattern="/advertisement/agent/edit.do" 		    access="hasRole('AGENT')" 		requires-channel="https"/> 		
-		<security:intercept-url pattern="/agent/edit.do**"						access="hasRole('AGENT')" 		requires-channel="https"/>
+		<security:intercept-url pattern="/advertisement/agent/list.do" 					access="hasRole('AGENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/advertisement/agent/create.do" 				access="hasRole('AGENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/advertisement/agent/edit.do" 		    		access="hasRole('AGENT')" 		requires-channel="https"/> 		
+		<security:intercept-url pattern="/agent/edit.do**"								access="hasRole('AGENT')" 		requires-channel="https"/>
+		<security:intercept-url pattern="/advertisement/agent/**" 				access="hasRole('AGENT')" 		requires-channel="https"/> 		
 		
 		<!-- Para Parent -->
-		<security:intercept-url pattern="/actor/createStudent.do"			    access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/parents/parent/list.do"			    access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/school/parent/**"					    access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/parentsGroup/parent/**"				access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/parent/parent/list.do"			    access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/parent/parent/addAdmin.do"			access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/parent/parent/deleteAdmin.do"			access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/parent/parent/removeAdmin.do"			access="hasRole('PARENT')"		requires-channel="https"/>	
-		<security:intercept-url pattern="/parent/parent/removeMember.do"		access="hasRole('PARENT')"		requires-channel="https"/>		
-		<security:intercept-url pattern="/classGroup/parent/list.do"			access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/actor/createStudent.do"			   			access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parents/parent/list.do"			   			access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/school/parent/**"					   			access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parentsGroup/parent/**"						access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parent/parent/list.do"			    		access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parent/parent/addAdmin.do"					access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parent/parent/deleteAdmin.do"					access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parent/parent/removeAdmin.do"					access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parent/parent/removeMember.do"				access="hasRole('PARENT')"		requires-channel="https"/>		
+		<security:intercept-url pattern="/classGroup/parent/list.do"					access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/inscription/parent/createInscription.do"		access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/inscription/parent/deleteInscription.do"		access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/homework/parent/**"							access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/subject/parent/**" 							access="hasRole('PARENT')"		requires-channel="https"/> 
+		<security:intercept-url pattern="/classGroup/parent/**"							access="hasRole('PARENT')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/schoolCalendar/parent/**" 					access="hasRole('PARENT')" 		requires-channel="https"/>
+		<security:intercept-url pattern="/event/parent/**" 								access="hasRole('PARENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/extracurricularActivity/parent/**"			access="hasRole('PARENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/message/parent/**"							access="hasRole('PARENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/mark/parent/**"								access="hasRole('PARENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/parent/edit.do"								access="hasRole('PARENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/student/edit.do"								access="hasRole('PARENT')" 		requires-channel="https"/> 
+		<security:intercept-url pattern="/classTime/parent/**"						    access="hasRole('PARENT')" 		requires-channel="https"/> 
+		
+
+		<!-- Para students -->
+		<security:intercept-url pattern="/chatRoom/student/**" 							access="hasRole('STUDENT')"		requires-channel="https"/> 
+		<security:intercept-url pattern="/student/student/**" 							access="hasRole('STUDENT')"		requires-channel="https"/> 
+				
+		
+		<!-- Para teacher -->
+		<security:intercept-url pattern="/inscription/teacher/createInscription.do"		access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/inscription/teacher/deleteInscription.do"		access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/parentsGroup/teacher/**"						access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/mark/teacher/**"								access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/classGroup/teacher/list.do"					access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/student/teacher/**"							access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/entry/teacher/**"								access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/fileUpload/teacher/**"						access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/teacher/edit.do"						        access="hasRole('TEACHER')"		requires-channel="https"/>	
+		<security:intercept-url pattern="/teacher/addClassGroup.do"					    access="hasRole('TEACHER')"		requires-channel="https"/>	
+		
 		
 		<!-- Restringir lo demás -->
-		<security:intercept-url pattern="/**" 									access="hasRole('NONE')" 		requires-channel="https"/>
+		<security:intercept-url pattern="/**" 											access="hasRole('NONE')" 		requires-channel="https"/>
 
 		<security:form-login 
 			login-page="/security/login.do"

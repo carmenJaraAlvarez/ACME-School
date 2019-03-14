@@ -19,5 +19,14 @@
 		<put-attribute name="title" value="School edit" />
 		<put-attribute name="body" value="/views/school/edit.jsp" />
 	</definition>
+	
+	<definition name="school/display" extends="master.page">
+		<put-attribute name="title" value="School display" />
+		<put-attribute name="body" value="/views/school/display.jsp" />
+	</definition>
+		<definition name="school/editForCreateGroup" extends="master.page">
+		<put-attribute name="title" value="Create School" />
+		<put-attribute name="body" value="/views/school/editForCreateGroup.jsp" />
+	</definition>
 
 </tiles-definitions>

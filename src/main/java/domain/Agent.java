@@ -33,18 +33,18 @@ public class Agent extends Actor {
 
 
 	/*-- Relaciones --*/
-	private Collection<Announcement>	announcements;
+	private Collection<Advertisement>	advertisements;
 
 
 	@Valid
 	@NotNull
 	@OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)
-	public Collection<Announcement> getAnnouncements() {
-		return this.announcements;
+	public Collection<Advertisement> getAdvertisements() {
+		return this.advertisements;
 	}
 
-	public void setAnnouncements(final Collection<Announcement> announcements) {
-		this.announcements = announcements;
+	public void setAdvertisements(final Collection<Advertisement> advertisements) {
+		this.advertisements = advertisements;
 	}
 
 }

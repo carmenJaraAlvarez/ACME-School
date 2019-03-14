@@ -13,16 +13,19 @@
 
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
 
-<jsp:useBean id="date" class="java.util.Date" />
+<div class="container-fluid">
+	<jsp:useBean id="date" class="java.util.Date" />
 
-<hr />
+	<hr />
 
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" />
-	Acme-School., Inc.
-</b>
-<div>
-	<a href="legal/terms.do"><spring:message
-			code="master.page.legal.terms" /></a> <a href="legal/cookies.do"><spring:message
-			code="master.page.legal.cookies" /></a>
+	<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" />
+		Acme-School., Inc.
+	</b>
+	<div>
+		<a href="legal/terms.do"><spring:message
+				code="master.page.legal.terms" /></a> <a href="legal/cookies.do"><spring:message
+				code="master.page.legal.cookies" /></a>
+	</div>
 </div>

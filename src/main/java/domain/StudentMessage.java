@@ -6,12 +6,14 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,8 +24,7 @@ public class StudentMessage extends DomainEntity {
 	private Date	moment;
 	@SafeHtml
 	private String	body;
-	@SafeHtml
-	private String	file;
+
 
 
 	@NotNull
@@ -37,6 +38,8 @@ public class StudentMessage extends DomainEntity {
 		this.moment = moment;
 	}
 
+	@NotBlank
+	@Lob
 	public String getBody() {
 		return this.body;
 	}
@@ -45,13 +48,6 @@ public class StudentMessage extends DomainEntity {
 		this.body = body;
 	}
 
-	public String getFile() {
-		return this.file;
-	}
-
-	public void setFile(final String file) {
-		this.file = file;
-	}
 
 
 	private Student	student;

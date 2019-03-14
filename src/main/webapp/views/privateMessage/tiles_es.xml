@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles_es.xml * Copyright (C) 2017 Universidad de Sevilla * Author 
+	(A) 2012 Rafael Corchuelo (corchu@us.es) * * The use of this project is hereby 
+	constrained to the conditions of the * TDG Licence, a copy of which you may 
+	download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="privateMessage/create" extends="master.page">
+		<put-attribute name="title" value="Escribir mensaje" />
+		<put-attribute name="body" value="/views/privateMessage/edit.jsp" />
+	</definition>
+
+	<definition name="privateMessage/edit" extends="master.page">
+		<put-attribute name="title" value="Mensaje" />
+		<put-attribute name="body" value="/views/privateMessage/edit.jsp" />
+	</definition>
+
+	<definition name="privateMessage/move" extends="master.page">
+		<put-attribute name="title" value="Mover Mensaje" />
+		<put-attribute name="body" value="/views/privateMessage/move.jsp" />
+	</definition>
+
+	<definition name="privateMessage/createNotification" extends="master.page">
+		<put-attribute name="title" value="Escribir notificación" />
+		<put-attribute name="body" value="/views/privateMessage/edit.jsp" />
+	</definition>
+
+	<definition name="privateMessage/invite/teacher" extends="master.page">
+		<put-attribute name="title" value="Invitar profesores" />
+		<put-attribute name="body" value="/views/privateMessage/edit.jsp" />
+	</definition>
+</tiles-definitions>

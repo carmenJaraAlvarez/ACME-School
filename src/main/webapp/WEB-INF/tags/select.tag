@@ -29,7 +29,15 @@
 
 <%@ attribute name="id" required="false" %>
 <%@ attribute name="onchange" required="false" %>
+<%@ attribute name="cssClass" required="false" %>
+<%@ attribute name="maxWidth" required="false" %>
 
+<jstl:if test="${maxWidth == null}">
+	<jstl:set var="maxWidth" value="800px" />
+</jstl:if>
+<jstl:if test="${cssClass == null}">
+	<jstl:set var="cssClass" value="form-control" />
+</jstl:if>
 <jstl:if test="${id == null}">
 	<jstl:set var="id" value="${UUID.randomUUID().toString()}" />
 </jstl:if>
@@ -44,11 +52,11 @@
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>	
-	<form:select id="${id}" path="${path}" onchange="${onchange}">
+	<form:select cssClass="${cssClass}" cssStyle="max-width:${maxWidth};" id="${id}" path="${path}" onchange="${onchange}">
 		<form:option value="0" label="----" />		
 		<form:options items="${items}" itemValue="id" itemLabel="${itemLabel}" />
 	</form:select>
-	<form:errors path="${path}" cssClass="error" />
+	<form:errors path="${path}" cssClass="error" /><br/>
 </div>
 
 

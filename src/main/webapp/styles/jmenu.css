@@ -10,16 +10,22 @@
 
 .jMenu {
 	display: table;
+	display: flex;
 	margin: 0px;
 	padding: 0px;
+	justify-content: space-between;
+	max-width: 800px;
 }
 
 /* First level */
 
 .jMenu li {
+	flex-grow: 1;
 	display: table-cell;
-	background-color: #322f32;
+	background-color: #8f1f1f;
 	margin: 0px;
+	text-align: center;
+	border: 1px solid #666;
 }
 
 .jMenu li a {
@@ -41,17 +47,27 @@
 	z-index: 9999;
 	padding: 0;
 	margin: 0;
+	margin-top: 6px;
 }
 
+.jMenu li ul li ul{
+	display: none;
+	position: absolute;
+	z-index: 9999;
+	padding: 0;
+	margin: 0;
+	margin-top: 0px;
+	margin-left: -2px;
+}
 .jMenu li ul li {
-	background-color: #322f32;
+	background-color: maroon;
 	display: block;
 	border-bottom: 1px solid #484548;
 	padding: 0;
 }
 
 .jMenu li ul li.arrow {
-	background-color: #322f32;
+	background-color: maroon;
 	background-image: url('../images/arrow_down.png');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -72,11 +88,15 @@
 }
 
 .jMenu li ul li a.isParent {
-	background-color: #3a3a3a;
+	background-color: maroon;
 	background-image: url('../images/arrow_right.png');
 	background-repeat: no-repeat;
 	background-position: right center;
 	text-decoration: none;
+}
+
+.jMenu li a:hover {
+	background-color: #514c52;
 }
 
 .jMenu li ul li a:hover {

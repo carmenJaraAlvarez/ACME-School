@@ -24,13 +24,21 @@
  
 <%@ attribute name="path" required="true" rtexprvalue="true" %>
 <%@ attribute name="code" required="true" rtexprvalue="true" %>
+<%@ attribute name="cssClass" required="false" %>
+<%@ attribute name="maxWidth" required="false" %>
 
+<jstl:if test="${maxWidth == null}">
+	<jstl:set var="maxWidth" value="800px" />
+</jstl:if>
+<jstl:if test="${cssClass == null}">
+	<jstl:set var="cssClass" value="form-control" />
+</jstl:if>
 <%-- Definition --%>
 
 <div>
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>
-	<form:password path="${path}"/>
-	<form:errors path="${path}" cssClass="error" />
+	<form:password cssClass="${cssClass}" cssStyle="max-width:${maxWidth};" path="${path}"/>
+	<form:errors path="${path}" cssClass="error" /><br/>
 </div>

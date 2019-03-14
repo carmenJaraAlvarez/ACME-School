@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -36,6 +37,8 @@ public class ParentService {
 	private ActorService		actorService;
 	@Autowired
 	private Validator			validator;
+	@Autowired
+	private FolderService		folderService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -52,21 +55,33 @@ public class ParentService {
 
 		return this.parentRepository.save(parent);
 	}
-	
-	 public Parent saveForParentsGroup(final Parent parent) {
-		 
-		    //this.checkAuthenticate();
-		 
-		    //this.checkPrincipal(parent);
-		 
-		    this.checkConcurrency(parent);
-		 
 
-		 
-		    return this.parentRepository.save(parent);
-		 
-		  }
-		 
+	public Parent saveForFolders(final Parent parent) {
+		this.checkAuthenticate();
+		//this.checkPrincipal(parent);
+		this.checkConcurrency(parent);
+
+		return this.parentRepository.save(parent);
+	}
+
+	public Parent saveEdit(final Parent parent) {
+		this.checkPrincipal(parent);
+		this.checkConcurrency(parent);
+
+		return this.parentRepository.save(parent);
+	}
+
+	public Parent saveForParentsGroup(final Parent parent) {
+
+		//this.checkAuthenticate();
+
+		//this.checkPrincipal(parent);
+
+		this.checkConcurrency(parent);
+
+		return this.parentRepository.save(parent);
+
+	}
 
 	public Parent findOne(final int parentId) {
 		return this.parentRepository.findOne(parentId);
@@ -109,7 +124,7 @@ public class ParentService {
 	private void checkConcurrency(final Parent parent) {
 		if (parent.getId() != 0) {
 			final Parent p = this.findOne(parent.getId());
-			Assert.isTrue(parent.getVersion() == p.getVersion());
+			Assert.isTrue(parent.getVersion() == p.getVersion(), "Concurrencia");
 		}
 	}
 
@@ -117,7 +132,7 @@ public class ParentService {
 		Assert.isTrue(!this.actorService.checkAuthenticate());
 	}
 
-	//Form de Agent (Se utiliza para la creacion de un nuevo agent)
+	//Form de Agent (Se utiliza para la creacion de un nuevo padre)
 	public Parent reconstruct(final CreateActorForm createActorForm, final BindingResult binding) {
 
 		final Parent result = createActorForm.getParent();
@@ -126,7 +141,7 @@ public class ParentService {
 		authority.setAuthority(Authority.PARENT);
 		userAccount.getAuthorities().add(authority);
 		this.validator.validate(userAccount, binding);
-		
+
 		final Md5PasswordEncoder encode = new Md5PasswordEncoder();
 		final String pwdHash = encode.encodePassword(userAccount.getPassword(), null);
 		userAccount.setPassword(pwdHash);
@@ -138,9 +153,9 @@ public class ParentService {
 		result.setParentsGroupsCreated(new ArrayList<ParentsGroup>());
 		result.setParentsGroupsManaged(new ArrayList<ParentsGroup>());
 		result.setParentsGroupsMemberOf(new ArrayList<ParentsGroup>());
-			
-		this.validator.validate(result, binding);
-		
+
+		if (binding != null)
+			this.validator.validate(result, binding);
 
 		return result;
 
@@ -160,9 +175,49 @@ public class ParentService {
 		result.setParentsGroupsManaged(parentBBDD.getParentsGroupsManaged());
 		result.setParentsGroupsMemberOf(parentBBDD.getParentsGroupsMemberOf());
 
-		this.validator.validate(result, binding);
+		if (binding != null)
+			this.validator.validate(result, binding);
 
 		return result;
 	}
 
+	public Collection<ParentsGroup> getAllGroups(final Parent parent) {
+		final Collection<ParentsGroup> all = new HashSet<ParentsGroup>();
+		all.addAll(parent.getParentsGroupsCreated());
+		all.addAll(parent.getParentsGroupsManaged());
+		all.addAll(parent.getParentsGroupsMemberOf());
+		return all;
+	}
+	public boolean checkIsParent() {
+		final boolean res = true;
+		try {
+			this.findByPrincipal();
+		} catch (final Throwable oops) {
+			return false;
+		}
+		return res;
+	}
+
+	public Double getAverageParentPerGroup() {
+		return this.parentRepository.averageTutorsPerGroup();
+	}
+	public Double getStandardDeviationParentPerGroup() {
+		return this.parentRepository.standardDeviationTutorsPerGroup();
+	}
+	public Double getMinParentPerGroup() {
+		return this.parentRepository.minTutorsPerGroup();
+	}
+	public Double getMaxParentPerGroup() {
+		return this.parentRepository.maxTutorsPerGroup();
+	}
+	public Collection<Parent> getParentsMessageLastWeek() {
+		return this.parentRepository.getParentsWithMessagesLastWeek();
+	}
+	public Collection<Parent> getParentsMessageLast2Weeks() {
+		return this.parentRepository.getParentsWithMessagesLast2Week();
+	}
+
+	public void flush() {
+		this.parentRepository.flush();
+	}
 }

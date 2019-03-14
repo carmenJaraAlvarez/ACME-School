@@ -37,7 +37,9 @@ public class LegalController extends AbstractController {
 	public ModelAndView terms() {
 		ModelAndView result;
 
-		result = new ModelAndView("legal/terms");
+		result = createModelAndView("legal/terms");
+		result.addObject("tabooWords", this.globalService.getGlobal().getSpamWords());
+		result.addObject("dangerousWords", this.globalService.getGlobal().getSpamWords());
 
 		return result;
 	}
@@ -45,7 +47,7 @@ public class LegalController extends AbstractController {
 	public ModelAndView cookies() {
 		ModelAndView result;
 
-		result = new ModelAndView("legal/cookies");
+		result = createModelAndView("legal/cookies");
 
 		return result;
 	}

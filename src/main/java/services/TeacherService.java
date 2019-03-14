@@ -39,7 +39,6 @@ public class TeacherService {
 	@Autowired
 	private ActorService		actorService;
 
-
 	// Constructors -----------------------------------------------------------
 
 	public TeacherService() {
@@ -51,6 +50,27 @@ public class TeacherService {
 		this.checkPrincipal(teacher);
 		this.checkConcurrency(teacher);
 		this.checkAuthenticate();
+		return this.teacherRepository.save(teacher);
+	}
+	
+	public Teacher saveForFolders(final Teacher teacher) {
+		//this.checkPrincipal(teacher);
+		this.checkConcurrency(teacher);
+		this.checkAuthenticate();
+		return this.teacherRepository.save(teacher);
+	}
+
+	public Teacher saveEdit(final Teacher teacher) {
+		this.checkPrincipal(teacher);
+		this.checkConcurrency(teacher);
+		//this.checkAuthenticate();
+		return this.teacherRepository.save(teacher);
+	}
+
+	public Teacher saveForParentsGroup(final Teacher teacher) {
+		//this.checkPrincipal(teacher);
+		this.checkConcurrency(teacher);
+		//this.checkAuthenticate();
 		return this.teacherRepository.save(teacher);
 	}
 
@@ -88,6 +108,10 @@ public class TeacherService {
 		return result;
 	}
 
+	public Teacher findByUserName(final String userName) {
+		return this.teacherRepository.findByUserName(userName);
+	}
+
 	// Other business methods -------------------------------------------------
 
 	public void checkPrincipal(final Teacher teacher) {
@@ -103,7 +127,7 @@ public class TeacherService {
 		}
 	}
 
-	//Form de Agent (Se utiliza para la creacion de un nuevo agent)
+	//Form de Agent (Se utiliza para la creacion de un nuevo profesor)
 	public Teacher reconstruct(final CreateActorForm createActorForm, final BindingResult binding) {
 
 		final Teacher result = createActorForm.getTeacher();
@@ -124,26 +148,41 @@ public class TeacherService {
 		result.setEntries(new ArrayList<Entry>());
 		result.setParentsGroups(new ArrayList<ParentsGroup>());
 		result.setClassGroups(new ArrayList<ClassGroup>());
-		this.validator.validate(result, binding);
+
+		if (binding != null)
+			this.validator.validate(result, binding);
 
 		return result;
 
 	}
 
-	// ---- Reconstruct de ActorForm para editar agents -------
+	// ---- Reconstruct de ActorForm para editar profesores -------
 	public Teacher reconstructTeacher(final ActorForm actorForm, final BindingResult binding) {
 		final Teacher teacherBBDD = this.findOne(actorForm.getId());
 		final Teacher result = actorForm.getTeacher();
 
 		result.setUserAccount(teacherBBDD.getUserAccount());
+		result.setFolders(teacherBBDD.getFolders());
+		result.setMessagesReceived(teacherBBDD.getMessagesReceived());
+		result.setMessagesSent(teacherBBDD.getMessagesSent());
 		result.setMarks(teacherBBDD.getMarks());
 		result.setEntries(teacherBBDD.getEntries());
 		result.setParentsGroups(teacherBBDD.getParentsGroups());
-		result.setSchool(teacherBBDD.getSchool());
 		result.setClassGroups(teacherBBDD.getClassGroups());
 
 		this.validator.validate(result, binding);
 
 		return result;
+	}
+
+	public Double getAverageTeachersPerSchool() {
+		return this.teacherRepository.averageTeachersPerSchool();
+	}
+	public Double getStandardDeviationTeachersPerSchool() {
+		return this.teacherRepository.standardDeviationTeachersPerSchool();
+	}
+
+	public void flush() {
+		this.teacherRepository.flush();
 	}
 }

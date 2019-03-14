@@ -1,5 +1,5 @@
 /*
- * StringToAdministratorConverter.java
+ * StringToParentsGroupConverter.java
  * 
  * Copyright (C) 2017 Universidad de Sevilla
  * 
@@ -21,7 +21,7 @@ import domain.ParentsGroup;
 
 @Component
 @Transactional
-public class StringToparentsGroupConverter implements Converter<String, ParentsGroup> {
+public class StringToParentsGroupConverter implements Converter<String, ParentsGroup> {
 
 	@Autowired
 	ParentsGroupRepository	parentsGroupRepository;

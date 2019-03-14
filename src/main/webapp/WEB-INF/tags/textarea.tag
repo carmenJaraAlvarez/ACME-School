@@ -25,7 +25,15 @@
 <%@ attribute name="path" required="true" %>
 <%@ attribute name="code" required="true" %>
 <%@ attribute name="readonly" required="false" %>
+<%@ attribute name="cssClass" required="false" %>
+<%@ attribute name="maxWidth" required="false" %>
 
+<jstl:if test="${maxWidth == null}">
+	<jstl:set var="maxWidth" value="800px" />
+</jstl:if>
+<jstl:if test="${cssClass == null}">
+	<jstl:set var="cssClass" value="form-control" />
+</jstl:if>
 <jstl:if test="${readonly == null}">
 	<jstl:set var="readonly" value="false" />
 </jstl:if>
@@ -36,6 +44,6 @@
 	<form:label path="${path}">
 		<spring:message code="${code}" />
 	</form:label>
-	<form:textarea path="${path}" readonly="${readonly}" />
+	<form:textarea cssClass="${cssClass}" cssStyle="max-width:${maxWidth};" path="${path}" readonly="${readonly}" />
 	<form:errors path="${path}" cssClass="error" />
 </div>

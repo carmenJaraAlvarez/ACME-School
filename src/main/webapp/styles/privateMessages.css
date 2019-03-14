@@ -1,0 +1,152 @@
+
+
+/********** comments **********/
+.container2{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.rojo{
+	flex-grow:1;
+	padding:5px;
+	padding-left: 20px;
+	background: rgba(255,126,98,0.7);
+	color: white;
+	font-weight: bold;
+	font-style: italic;
+}
+.verde{
+	flex-grow:1;
+	padding:5px;
+	padding-left: 20px;
+	background: rgba(20,99,0,0.7);
+	color: white;
+	font-weight: bold;
+	font-style: italic;
+}
+a.high{
+	background: rgba(255,227,137,0.4);
+}
+a.neutral{
+	background: rgba(137,197,255,0.2);
+}
+a.low{
+}
+.resto{
+	display: flex;
+	flex-direction: row;
+}
+.sublista{
+	display: flex;
+	flex-direction: column;
+	border: 0px solid #ddd;
+	border-right-width: 1px;
+	width: 30%;
+	max-width: 200px;
+	padding-top:10px;
+	padding-right:10px;
+}
+.boton{
+	width:100%;
+	margin-bottom: 10px;
+    font-size: 17px;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid #ddd
+}
+.boton:hover{
+    background: rgba(0,0,0,0.2);
+    border: 1px solid black
+}
+.containerMessages{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	flex-grow:1;
+	padding-left: 10px;
+	padding-top:10px;
+}
+.nombreCarpeta{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	font-size: 20px;
+	font-weight: bold;
+	padding:10px;
+}
+.moverBorrar{
+	display: flex;
+	flex-grow:1;
+	justify-content: center;
+	background: rgba(0,0,0,0.05);
+	font-size: 15px;
+	font-weight: normal;
+	text-decoration: none;
+	padding:10px;
+	color: black;
+	border: 1px solid #ddd;
+	
+}
+.moverBorrar:hover{
+	background: rgba(0,0,0,0.1);
+	text-decoration: none;
+	border: 1px solid black;
+}
+
+.moverBorrar:active { 
+	background: rgba(0,0,0,0.1);
+	text-decoration: none;
+}
+.mensajes{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.fecha{
+	float: right;
+	font-size: 13px;
+	font-style: italic;
+	font-weight: bold;
+}
+.textBefore{
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.textAfter{
+	font-weight: bold;
+}
+.body{
+	font-size: 16px;
+	padding: 15px;
+	background: rgba(0,0,0,0.05);
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+
+/* CSS para mover el mensaje */
+	
+.submenuMove{
+	border-bottom: 1px solid black;
+}
+.restoMove{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.sublistaMove{
+	display: flex;
+	flex-direction: column;
+	border-right: 1px solid #ddd;
+	flex-grow:1;
+}
+
+.sublistaMove hr{
+	width: 100%;
+}
+.moveMessage{
+	width: 30%;
+	padding: 10px;
+	max-width: 300px;
+}

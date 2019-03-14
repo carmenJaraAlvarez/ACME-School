@@ -58,16 +58,21 @@
 </script>
 
 </head>
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css">
+
 
 <body>
 
+<div class="container-fluid">
 	<div>
 		<tiles:insertAttribute name="header" />
 	</div>
-	<div>
+	<div><div class="container-fluid" >
 		<h1>
+		
 			<tiles:insertAttribute name="title" />
-		</h1>
+			
+		</h1></div>
 		<tiles:insertAttribute name="body" />	
 		<jstl:if test="${message != null}">
 			<br />
@@ -77,6 +82,6 @@
 	<div>
 		<tiles:insertAttribute name="footer" />
 	</div>
-
+</div>
 </body>
 </html>
